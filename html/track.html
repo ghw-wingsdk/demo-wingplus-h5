@@ -1,0 +1,199 @@
+<!-- 事件列表 开始-->
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel2">数据收集</h4>
+        </div>
+        <div class="modal-body">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>事件</th>
+                  <th>事件名称</th>
+                  <th class="text-center">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>登录游戏</td>
+                  <td>ghw_login</td>
+                  <!-- <td><button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#data_settings">设置</button></td> -->
+                  <td><button type="button" class="btn btn-info btn-block" onclick="showDataSettings4Event('ghw_login')">设置</button></td>
+                </tr>
+                <tr>
+                  <td>点击充值</td>
+                  <td>ghw_initiated_payment</td>
+                  <!-- <td><button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#data_settings">设置</button></td> -->
+                  <td><button type="button" class="btn btn-info btn-block" onclick="showDataSettings4Event('ghw_initiated_payment')">设置</button></td>
+                </tr>
+                <tr>
+                  <td>充值完成</td>
+                  <td>ghw_payment</td>
+                  <td><button type="button" class="btn btn-info btn-block" onclick="showDataSettings4Event('ghw_payment')">设置</button></td>
+                </tr>
+                <tr>
+                  <td>点击购买</td>
+                  <td>ghw_initiated_purchase</td>
+                  <td><button type="button" class="btn btn-info btn-block" onclick="showDataSettings4Event('ghw_initiated_purchase')">设置</button></td>
+                </tr>
+                <tr>
+                  <td>充值购买</td>
+                  <td>ghw_purchase</td>
+                  <td><button type="button" class="btn btn-info btn-block" onclick="showDataSettings4Event('ghw_purchase')">设置</button></td>
+                </tr>
+                <tr>
+                  <td>玩家等级增长</td>
+                  <td>ghw_level_achieved</td>
+                  <td><button type="button" class="btn btn-info btn-block" onclick="showDataSettings4Event('ghw_level_achieved')">设置</button></td>
+                </tr>
+                <tr>
+                  <td>创建游戏角色</td>
+                  <td>ghw_user_create</td>
+                  <td><button type="button" class="btn btn-info btn-block" onclick="showDataSettings4Event('ghw_user_create')">设置</button></td>
+                </tr>
+                <tr>
+                  <td>更新用户资料</td>
+                  <td>ghw_user_info_update</td>
+                  <td><button type="button" class="btn btn-info btn-block" onclick="showDataSettings4Event('ghw_user_info_update')">设置</button></td>
+                </tr>
+                <tr>
+                  <td>玩家任务信息</td>
+                  <td>ghw_task_update</td>
+                  <td><button type="button" class="btn btn-info btn-block" onclick="showDataSettings4Event('ghw_task_update')">设置</button></td>
+                </tr>
+                <tr>
+                  <td>玩家货币情况变更</td>
+                  <td>ghw_gold_update</td>
+                  <td><button type="button" class="btn btn-info btn-block" onclick="showDataSettings4Event('ghw_gold_update')">设置</button></td>
+                </tr>
+                <tr>
+                  <td>导入用户</td>
+                  <td>ghw_user_import</td>
+                  <td><button type="button" class="btn btn-info btn-block" onclick="showDataSettings4Event('ghw_user_import')">设置</button></td>
+                </tr>
+                <tr>
+                  <td>自定义事件</td>
+                  <td>ghw_self_</td>
+                  <td><button type="button" class="btn btn-info btn-block" onclick="showDataSettings4Event('ghw_self_')">设置</button></td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>
+        </div>
+    </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+<!-- 事件列表 结束-->
+
+<!-- 事件设置与发送 开始-->
+<div class="modal fade" id="data_settings" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" aria-hidden="true" onclick="hideModal('data_settings')">&times;</button>
+                <h4 class="modal-title" id="myModalLabel3">发送事件</h4>
+            </div>
+            <div class="modal-body">
+                <ul id="myTab" class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#wing_tab" data-toggle="tab">WING</a>
+                    </li>
+                    <li><a href="#appsflyer_tab" data-toggle="tab">APPSFLYER</a></li>
+                    <li><a href="#facebook_tab" data-toggle="tab">FACEBOOK</a></li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane fade in active" id="wing_tab">
+                        <!-- wing事件定义 开始 -->
+                        <table class="table table-hover">
+                          <thead>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>事件名称</td>
+                              <td id="wing_default_event_name"></td>
+                            </tr>
+                            <tr>
+                              <td>事件值</td>
+                              <td><input id="wing_default_event_value" class="form-control" type="number" value="0"></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <!-- wing事件定义 结束 -->
+                        <button type="button" class="btn btn-success" onclick="dynamicAddOneRow('wing_params')">添加参数</button>
+                        <!-- 预/自定义参数 开始 -->
+                        <table class="table table-hover" id="wing_params">
+                          <thead>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                        </table>
+                        <!-- 预/自定义参数 结束 -->
+                    </div>
+                    <div class="tab-pane fade" id="appsflyer_tab">
+                        <!-- appsflyer事件定义 开始 -->
+                        <table class="table table-hover" id="af_event">
+                          <thead>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>事件名称</td>
+                              <td><input id="af_event_name" class="form-control" type="text" value=""></td>
+                            </tr>
+                            <tr>
+                              <td>事件值</td>
+                              <td><input id="af_event_value" class="form-control" type="number" value=""></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <!-- appsflyer事件定义 结束 -->
+                        <button type="button" class="btn btn-success" onclick="dynamicAddOneRow('af_custom')">添加参数</button>
+                        <!-- 自定义参数 开始 -->
+                        <table class="table table-hover" id="af_custom">
+                          <thead>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                        </table>
+                        <!-- 自定义参数 结束 -->
+                    </div>
+                    <!-- facebook事件 开始 -->
+                    <div class="tab-pane fade" id="facebook_tab">
+                      <!-- facebook事件定义 开始 -->
+                      <table class="table table-hover" id="fb_event">
+                        <thead>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>事件名称</td>
+                            <td><input id="fb_event_name" class="form-control" type="text" value=""></td>
+                          </tr>
+                          <tr>
+                            <td>事件值</td>
+                            <td><input id="fb_event_value" class="form-control" type="number" value=""></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <!-- facebook事件定义 结束 -->
+                      <button type="button" class="btn btn-success" onclick="dynamicAddOneRow('fb_custom')">添加参数</button>
+                      <!-- facebook自定义参数 开始 -->
+                      <table class="table table-hover" id="fb_custom">
+                        <thead>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      </table>
+                      <!-- facebook自定义参数 结束 -->
+                  </div>
+                  <!-- facebook事件 结束-->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="track(this)">发送</button>
+                <button type="button" class="btn btn-info" onclick="hideModal('data_settings')">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<!-- 事件设置与发送 结束

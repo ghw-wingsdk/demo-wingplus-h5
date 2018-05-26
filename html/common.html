@@ -1,0 +1,56 @@
+<!-- 公共功能模态框 -->
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel2">公共功能</h4>
+        </div>
+        <div class="modal-body">
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-success">setServerId: 设置服务器ID</li>
+                <li class="list-group-item">参数:<input type="text" class="form-control" id="server_id" value='' placeholder="服务器ID"></li>
+                <li class="list-group-item">
+                    <button type="button" class="btn btn-info center-block" onclick="setServerId()">测试</button>
+                </li>
+            </ul>
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-success">setGameUserId: 设置GameUserId</li>
+                <li class="list-group-item">参数:<input type="text" class="form-control" id="game_user_id" value='' placeholder="GameUserId"></li>
+                <li class="list-group-item">
+                    <button type="button" class="btn btn-info center-block" onclick="setGameUserId()">测试</button>
+                </li>
+            </ul>
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-success">setLevel: 设置用户等级Level</li>
+                <li class="list-group-item">参数:<input type="text" class="form-control" id="level" value='' placeholder="用户等级Level"></li>
+                <li class="list-group-item">
+                    <button type="button" class="btn btn-info center-block" onclick="setLevel('设置用户等级Level')">测试</button>
+                </li>
+            </ul>
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-success">setNickname: 设置游戏玩家昵称(web端待实现)</li>
+                <li class="list-group-item">参数:<input type="text" class="form-control" id="nickname" value='' placeholder="游戏玩家昵称"></li>
+                <li class="list-group-item">
+                    <button type="button" class="btn btn-info center-block" onclick="setNickname('设置游戏玩家昵称')">测试</button>
+                </li>
+            </ul>
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-success">setDebugMode: 开启/关闭调试模式(只适用于微端)</li>
+                <li class="list-group-item">是否开启调试模式: <input id="debug_mode" type="checkbox" /></li>
+                <li class="list-group-item">
+                    <button type="button" class="btn btn-info center-block" onclick="setDebugMode('开启调试模式')">测试</button>
+                </li>
+            </ul>
+            <!-- <ul class="list-group">
+                <li class="list-group-item list-group-item-success">setLoginFlowType: 设置登录流程(只适用于微端)</li>
+                <li class="list-group-item">设置登录流程(选中则有登录界面): <input id="login_flow_type" type="checkbox" /></li>
+                <li class="list-group-item">
+                    <button type="button" class="btn btn-info center-block" onclick="setLoginFlowType('设置登录流程')">测试</button>
+                </li>
+            </ul> -->
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>
+        </div>
+    </div><!-- /.modal-content -->
+</div><!-- /.modal -->

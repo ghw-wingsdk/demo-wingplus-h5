@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>wingplus SDK Demo</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/vender/jquery.min.js" type="text/javascript"></script>
+    <script src="js/vender/bootstrap.min.js" type="text/javascript"></script>
+    <script src="js/vender/bootbox.min.js"></script>
+    <script src="js/vender/clipboard.min.js"></script>
+
+    <!-- Bootstrap theme -->
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/theme.css" rel="stylesheet">
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="js/vender/ie-emulation-modes-warning.js"></script>
+    <!-- <script src="../dist/output/wingplus.min.js"></script> -->
+    <script src="js/wingplus/wingplus.min.js"></script>
+    <script src="js/demo/index.js"></script>
+    <script src="js/demo/util.js"></script>
+    <script src="js/demo/common.js"></script>
+    <script src="js/demo/track.js"></script>
+    <script src="js/demo/login.js"></script>
+    <script src="js/demo/device.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+<body>
+    <div class="page-header" style="text-align:center;">
+        <h1 >Wingplus SDK Demo</h1>
+    </div>
+    <div style="text-align:center; margin:0 auto; width: 50%; padding-top: 20px">
+        <p style="padding-top: 20px">
+            <button type="button" class="btn btn-info btn-block" onclick="login()">登录</button>
+        </p>
+        <p style="padding-top: 20px">
+            <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#wingplus_login">接口登录</button>
+        </p>
+
+        <!--<p style="padding-top: 20px">
+            <button type="button" class="btn btn-info btn-block" onclick="binds()">绑定(聚合)</button>
+        </p>
+
+        <p style="padding-top: 20px">
+            <button type="button" class="btn btn-info btn-block" onclick="bind()">绑定</button>
+        </p>
+
+        <p style="padding-top: 20px">
+            <button type="button" class="btn btn-info btn-block" onclick="unbind()">解绑</button>
+        </p>
+
+        <p style="padding-top: 20px">
+            <button type="button" class="btn btn-info btn-block" onclick="switchAccount()">切换账号</button>
+        </p>
+
+        <p style="padding-top: 20px">
+            <button type="button" class="btn btn-info btn-block" onclick="selectAccount()">账号选择</button>
+        </p>-->
+
+        <p style="padding-top: 20px">
+            <button id="bind" type="button" class="btn btn-info btn-block">绑定</button>
+        </p>
+
+
+        <p style="padding-top: 20px">
+            <button type="button" class="btn btn-info btn-block" onclick="getProducts()">支付</button>
+        </p>
+        <p style="padding-top: 20px">
+            <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#wingplus_track">数据收集</button>
+        </p>
+        <p style="padding-top: 20px">
+            <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#wingplus_common">公共功能</button>
+        </p>
+        <p style="padding-top: 20px">
+            <button type="button" class="btn btn-info btn-block" onclick="device.getDeviceInfo()">设备信息</button>
+        </p>
+    </div>
+
+
+    <div id="goodsModel" class="jumbotron model">
+        <div>
+            <div class="col-sm-3"></div>
+            <div class="col-xs-12 col-sm-6 center-block">
+                <div class="panel panel-default center-block">
+                    <div class="panel-heading">
+                        <button type="button" class="close" onclick="colseModel('goodsModel')"><span aria-hidden="true">x</span><span
+                                class="sr-only">关闭</span></button>
+                        <h3 class="text-center">商品列表</h3>
+                    </div>
+
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>商品名</td>
+                                <td>商品ID</td>
+                                <td>操作</td>
+                            </tr>
+                            <tbody id="productsHtml">
+
+                            </tbody>
+
+                        </table>
+
+                    <div class="container bg-info">
+                        <div class="row">
+                            <button type="button" class="btn btn-primary pull-right" onclick="colseModel('goodsModel')">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="payModel" class="jumbotron model">
+        <div>
+            <div class="col-sm-4"></div>
+            <div class="col-xs-12 col-sm-4 center-block">
+                <div class="panel panel-default center-block">
+                    <div class="panel-heading">
+                        <button type="button" class="close" onclick="colseModel('payModel')"><span aria-hidden="true">x</span><span
+                                class="sr-only">关闭</span></button>
+                        <h3 class="text-center">支付方式</h3>
+                    </div>
+                    <div id="payType">
+
+                    </div>
+                    <div class="container bg-info">
+                        <div class="row">
+                            <button type="button" class="btn btn-primary pull-right" onclick="colseModel('payModel')">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/html" id="productsTemplate" >
+        <tr>
+            <td>productName</td>
+            <td>productId</td>
+            <td><button class="btn" id="pay_btn" onclick="doPay('productId','productName')">支付</button></td>
+        </tr>
+    </script>
+
+    <div class="modal fade" id="wingplus_login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+
+    <div class="modal fade" id="wingplus_track" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+
+    <div class="modal fade" id="wingplus_common" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+
+    <!-- 设备信息模态框 -->
+    <div class="modal fade" id="wingplus_device" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+
+    <div id="bindModel" class="jumbotron model">
+        <div>
+            <div class="col-sm-3"></div>
+            <div class="col-xs-12 col-sm-6 center-block">
+                <div class="panel panel-default center-block">
+                    <div class="panel-heading">
+                        <button type="button" class="close" onclick="colseModel('bindModel')"><span aria-hidden="true">x</span><span
+                                class="sr-only">关闭</span></button>
+                        <h3 class="text-center">账号绑定</h3>
+                    </div>
+                    <div style="text-align:center; margin:0 auto; width: 50%; padding-top: 20px">
+                        <p style="padding-top: 20px">
+                            <button type="button" class="btn btn-info btn-block" onclick="binds()">绑定(聚合)</button>
+                        </p>
+
+                        <p style="padding-top: 20px">
+                            <button type="button" class="btn btn-info btn-block" onclick="bind()">绑定</button>
+                        </p>
+
+                        <p style="padding-top: 20px">
+                            <button type="button" class="btn btn-info btn-block" onclick="unbind()">解绑</button>
+                        </p>
+
+                        <p style="padding-top: 20px">
+                            <button type="button" class="btn btn-info btn-block" onclick="switchAccount()">切换账号</button>
+                        </p>
+
+                        <p style="padding-top: 20px">
+                            <button type="button" class="btn btn-info btn-block" onclick="selectAccount()">账号选择</button>
+                        </p>
+                    </div>
+
+                    <div class="container bg-info">
+                        <div class="row">
+                            <button type="button" class="btn btn-primary pull-right" onclick="colseModel('bindModel')">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="margin-bottom: 50px">
+    </div>
+</body>
+</html>
