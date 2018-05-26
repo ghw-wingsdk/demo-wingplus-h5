@@ -64,7 +64,7 @@ wingAndroid.user = {
         };
     },
 
-    clearLoginCache() {
+    clearLoginCache: function() {
         h5_android.clearLoginCache();
     },
 
