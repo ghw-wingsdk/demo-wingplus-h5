@@ -1,8 +1,8 @@
 /*****************************************common begin*****************************************/
 $(function(){
     wingplus.init({
-        //appId: 'f7f9a9d18da611e5a0be000d3a906774', //测试环境
-        //appKey: 'CFHF7nQCCaojCX6Sm4eT1GEIWRprimgX', //测试环境
+        // appId: 'f7f9a9d18da611e5a0be000d3a906774', //测试环境
+        // appKey: 'CFHF7nQCCaojCX6Sm4eT1GEIWRprimgX', //测试环境
         appId: '0befcc31aab711e5a22602c85f0429f5', //生产环境
         appKey: 'GlKO1XOwNYhi8Kc3L2Kd1rOzhITc6VDX', //生产环境
         sdkType: 'html5',
@@ -116,9 +116,8 @@ function switchAccount(){
 /*****************************************selectAccount begin*****************************************/
 function selectAccount(){
     wingplus.bind.selectAccountModal({
-        success: function(da){
-            console.log(da);
-            console.log("切换成功11");
+        success: function(){
+            console.log("切换成功");
             showResult('切换', '切换成功');
         },
         fail: function(){
