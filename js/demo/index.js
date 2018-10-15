@@ -14,6 +14,14 @@ $(function(){
     $("#bind").click(function (){
         $("#bindModel").show(500);
     });
+
+    if(isCG()){
+        //CG平台不应该显示接口登录
+        $("#api_login").hide();
+        login();
+    }
+
+    wingplus.pay.isPayServiceAvailable();
 })
 /*****************************************common end*****************************************/
 
@@ -160,35 +168,85 @@ function getProducts() {
     $("#goodsModel").removeClass("hide");
     $("#goodsModel").show(500);
 
-    wingplus.pay.isPayServiceAvailable(function(result){
-        console.log("---isPayServiceAvailable:---", result);
-    })
+    // if(wingplus.pay.isPayServiceAvailable()){
+        wingplus.pay.getProducts({
+            success: successCB,
+            fail: function(result){
+                console.warn("获取商品失败");
+                if(result){
+                    console.warn("Result code", result.code);
+                    console.warn("Result msg", result.msg);
 
-    wingplus.pay.getProducts({
-        success: successCB,
-        fail: function(){
-            console.log("获取商品失败");
-            showResult('获取商品', '获取商品失败');
-        },
-        cancel: function(){
-            console.log("获取商品取消");
-            showResult('获取商品', '获取商品取消');
-        }
-    });
+                    if(result.code == 4026){
+                        showResult('获取商品', '获取商品失败，支付不可用，请检查支付是否已关闭');
+                    }else{
+                        showResult('获取商品', '获取商品失败');
+                    }
+                }else{
+                    showResult('获取商品', '获取商品失败');
+                }
+                
+            },
+            cancel: function(result){
+                console.warn("获取商品取消");
+                if(result){
+                    console.warn("Result code:", result.code);
+                    console.warn("Result msg:", result.msg);
+                }
+                
+                showResult('获取商品', '获取商品取消');
+            }
+        });
+    // }else{
+    //     console.log("获取商品失败");
+    //     showResult('获取商品', '获取商品失败，支付不可用，请检查支付是否已关闭');
+    // }
+    
 }
 
 //支付
 function doPay(productId, productName, channel) {
-    wingplus.pay.pay({
-        channel: channel,
-        productId: productId,
-        serverId: '3231',
-        gameUserId: '32',
-        productName: productName,
-        success: function (a) {
-            $("#payModel").hide(500);
-        }
-    });
+    // if(wingplus.pay.isPayServiceAvailable()){
+        wingplus.pay.pay({
+            channel: channel,
+            productId: productId,
+            serverId: '3231',
+            gameUserId: '32',
+            productName: productName,
+            success: function (a) {
+                $("#payModel").hide(500);
+            },
+            fail: function(result){
+                console.warn("支付失败");
+                if(result){
+                    console.warn("Result code", result.code);
+                    console.warn("Result msg", result.msg);
+
+                    if(result.code == 4026){
+                        showResult('商品支付', '支付失败，支付不可用，请检查支付是否已关闭');
+                    }else{
+                        showResult('商品支付', '支付失败');
+                    }
+                }else{
+                    showResult('商品支付', '支付失败');
+                }
+                
+            },
+            cancel: function(result){
+                console.warn("支付取消");
+                if(result){
+                    console.warn("Result code:", result.code);
+                    console.warn("Result msg:", result.msg);
+                }
+                
+                showResult('支付取消', '支付取消');
+            }
+        });
+    // }else{
+    //     console.log("支付失败");
+    //     showResult('支付失败', '支付失败，支付不可用，请检查支付是否已关闭');
+    // }
+    
 }
 /*****************************************pay end*****************************************/
 

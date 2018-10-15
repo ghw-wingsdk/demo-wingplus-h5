@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>wingplus SDK Demo</title>
+    <title>WING DEMO</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/vender/jquery.min.js" type="text/javascript"></script>
     <script src="js/vender/bootstrap.min.js" type="text/javascript"></script>
@@ -32,14 +32,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 <body>
-    <div class="page-header" style="text-align:center;">
-        <h1 >Wingplus SDK Demo</h1>
+    <div style="text-align: center; border-bottom: 1px solid #eee">
+        <h1 >WING DEMO</h1>
     </div>
-    <div style="text-align:center; margin:0 auto; width: 50%; padding-top: 20px">
-        <p style="padding-top: 20px">
+    <div style="text-align:center; margin:0 auto; width: 50%; overflow-y: scroll">
+        <p style="padding-top: 10px">
             <button type="button" class="btn btn-info btn-block" onclick="login()">登录</button>
         </p>
-        <p style="padding-top: 20px">
+        <p style="padding-top: 10px" id="api_login">
             <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#wingplus_login">接口登录</button>
         </p>
 
@@ -63,21 +63,21 @@
             <button type="button" class="btn btn-info btn-block" onclick="selectAccount()">账号选择</button>
         </p>-->
 
-        <p style="padding-top: 20px">
+        <p style="padding-top: 10px">
             <button id="bind" type="button" class="btn btn-info btn-block">绑定</button>
         </p>
 
 
-        <p style="padding-top: 20px">
+        <p style="padding-top: 10px">
             <button type="button" class="btn btn-info btn-block" onclick="getProducts()">支付</button>
         </p>
-        <p style="padding-top: 20px">
+        <p style="padding-top: 10px">
             <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#wingplus_track">数据收集</button>
         </p>
-        <p style="padding-top: 20px">
+        <p style="padding-top: 10px">
             <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#wingplus_common">公共功能</button>
         </p>
-        <p style="padding-top: 20px">
+        <p style="padding-top: 10px">
             <button type="button" class="btn btn-info btn-block" onclick="device.getDeviceInfo()">设备信息</button>
         </p>
     </div>

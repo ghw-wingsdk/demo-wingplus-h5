@@ -4,11 +4,24 @@ function colseModel(id) {
     $('#info_table2').show(100);
 }
 
+function isCG(){
+    return getUrlParams('sdkToken')==null?false:true;
+}
+
+//获取当前参数
+function getUrlParams(paramName){
+    var reg = new RegExp("(^|&)" + paramName + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]);
+    return null;
+}
+
 //窗口随着屏幕的大小自适应
 function window_size(){
-    var b=$(window).height();
-    $('#goodsModel').css({overflow:'auto',height:b});
-    $('#them_hidden').css({overflow:'hidden',height:b})
+    // var b=$(window).height();
+    var h = window.document.documentElement.clientHeight;
+    $('#goodsModel').css({overflow:'scroll',height:h});
+    $('#them_hidden').css({overflow:'hidden',height:h})
 }
 //关闭弹出框背景取消固定化
 function bg_auto(){
