@@ -1,0 +1,77 @@
+<!-- bind 开始-->
+<div class="modal-dialog">
+    <div class="modal-content">
+        <!-- <div id="bindModel" class="jumbotron model">
+            <div>
+                <div class="col-sm-3"></div>
+                <div class="col-xs-12 col-sm-6 center-block">
+                    <div class="panel panel-default center-block">
+                        <div class="panel-heading">
+                            <button type="button" class="close" onclick="colseModel('bindModel')"><span aria-hidden="true">x</span><span
+                                    class="sr-only">关闭</span></button>
+                            <h3 class="text-center">账号绑定</h3>
+                        </div>
+                        <div style="text-align:center; margin:0 auto; width: 50%; padding-top: 20px">
+                            <p style="padding-top: 20px">
+                                <button type="button" class="btn btn-info btn-block" onclick="binds()">绑定(聚合)</button>
+                            </p>
+
+                            <p style="padding-top: 20px">
+                                <button type="button" class="btn btn-info btn-block" onclick="bind()">绑定</button>
+                            </p>
+
+                            <p style="padding-top: 20px">
+                                <button type="button" class="btn btn-info btn-block" onclick="unbind()">解绑</button>
+                            </p>
+
+                            <p style="padding-top: 20px">
+                                <button type="button" class="btn btn-info btn-block" onclick="switchAccount()">切换账号</button>
+                            </p>
+
+                            <p style="padding-top: 20px">
+                                <button type="button" class="btn btn-info btn-block" onclick="selectAccount()">账号选择</button>
+                            </p>
+                        </div>
+
+                        <div class="container bg-info">
+                            <div class="row">
+                                <button type="button" class="btn btn-primary pull-right" onclick="colseModel('bindModel')">取消</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel3">账号绑定</h4>
+        </div>
+        <div class="modal-body">
+            <div style="text-align:center; margin:0 auto; width: 50%;">
+                <p style="padding-top: 20px">
+                    <button type="button" class="btn btn-info btn-block" onclick="bind.binds()">绑定(聚合)</button>
+                </p>
+
+                <p style="padding-top: 20px">
+                    <button type="button" class="btn btn-info btn-block" onclick="bind.bind()">绑定</button>
+                </p>
+
+                <p style="padding-top: 20px">
+                    <button type="button" class="btn btn-info btn-block" onclick="bind.unbind()">解绑</button>
+                </p>
+
+                <p style="padding-top: 20px">
+                    <button type="button" class="btn btn-info btn-block" onclick="bind.switchAccount()">切换账号</button>
+                </p>
+
+                <p style="padding-top: 20px">
+                    <button type="button" class="btn btn-info btn-block" onclick="bind.selectAccount()">账号选择</button>
+                </p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>
+        </div>
+    </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+<!-- bind 结束-->
