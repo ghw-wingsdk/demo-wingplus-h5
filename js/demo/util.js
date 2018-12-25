@@ -8,6 +8,15 @@ function isCG(){
     return getUrlParams('sdkToken')==null?false:true;
 }
 
+function isFBCanvas(){
+    if((document.referrer && document.referrer.indexOf("apps.facebook.com") > -1)
+    || getUrlParams('from') == 'fbcanvas'){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 //获取当前参数
 function getUrlParams(paramName){
     var reg = new RegExp("(^|&)" + paramName + "=([^&]*)(&|$)", "i");
@@ -63,6 +72,4 @@ function showResult(subject, msg){
     //bootbox.alert("result:"+msg);
 }
 /*****************************************common end*****************************************/
-
-
 

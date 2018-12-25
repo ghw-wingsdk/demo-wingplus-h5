@@ -11,7 +11,8 @@
                 <tr>
                   <th>商品名称</th>
                   <th>商品Id</th>
-                  <th class="text-center">操作</th>
+                  <th>支付方式</th>
+                  <th>操作</th>
                 </tr>
               </thead>
               <tbody id="productsHtml"></tbody>
@@ -27,7 +28,10 @@
   <tr>
       <td>productName</td>
       <td>productId</td>
-      <td><button class="btn btn-success" id="pay_btn" onclick="pay.doPay('productId','productName')">支付</button></td>
+      <td>
+        <payTypeSelect>
+      </td>
+      <td><button class="btn btn-success" id="pay_btn" onclick="pay.doPay('productId','productName', this)">支付</button></td>
   </tr>
 </script>
 

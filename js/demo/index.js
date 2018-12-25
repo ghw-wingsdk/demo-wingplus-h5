@@ -1,12 +1,14 @@
 /*****************************************common begin*****************************************/
 $(function(){
+    $('.selectpicker').selectpicker({});
+
     wingplus.init({
         // appId: 'testLogin', //测试环境
         // appKey: 'abc', //测试环境
-        // appId: 'f7f9a9d18da611e5a0be000d3a906774', //测试环境
-        // appKey: 'CFHF7nQCCaojCX6Sm4eT1GEIWRprimgX', //测试环境
-        appId: '0befcc31aab711e5a22602c85f0429f5', //生产环境
-        appKey: 'GlKO1XOwNYhi8Kc3L2Kd1rOzhITc6VDX', //生产环境
+        appId: 'f7f9a9d18da611e5a0be000d3a906774', //测试环境
+        appKey: 'CFHF7nQCCaojCX6Sm4eT1GEIWRprimgX', //测试环境
+        // appId: '0befcc31aab711e5a22602c85f0429f5', //生产环境
+        // appKey: 'GlKO1XOwNYhi8Kc3L2Kd1rOzhITc6VDX', //生产环境
         sdkType: 'html5',
         // platform: 'html5',
         debug: true,
@@ -20,8 +22,20 @@ $(function(){
     if(isCG()){
         //CG平台不应该显示接口登录
         $("#api_login").hide();
+        //直接登录
+        login();
+    }else if(isFBCanvas()){
+        //Facebook canvas平台不显示登录选项
+        $("#login_ui").hide();
+        $("#api_login").hide();
+        //直接登录
         login();
     }
+
+    // setTimeout(() => {
+    //     login();
+    // }, 5000);
+    
 
 })
 /*****************************************common end*****************************************/
@@ -29,6 +43,8 @@ $(function(){
 /*****************************************login begin*****************************************/
 function login(){
     wingplus.user.login({
+        // platform: 'FACEBOOK',
+        // FB:true,
         success: function(){
             console.log("登录成功");
             showResult('登录', '登录成功');
@@ -81,3 +97,11 @@ $(function(){
     $("#wingplus_device").load('./html/device.html');
 })
 /*****************************************device end*****************************************/
+
+/*****************************************logout begin*****************************************/
+function logout(){
+    wingplus.user.logout();
+    console.log("登出成功");
+    showResult('登出', '登出成功');
+}
+/*****************************************logout end*****************************************/

@@ -19,63 +19,63 @@
                   <td>登录游戏</td>
                   <td>ghw_login</td>
                   <!-- <td><button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#data_settings">设置</button></td> -->
-                  <td><button type="button" class="btn btn-info btn-block" onclick="showDataSettings4Event('ghw_login')">设置</button></td>
+                  <td><button type="button" class="btn btn-success btn-block" onclick="showDataSettings4Event('ghw_login')">设置</button></td>
                 </tr>
                 <tr>
                   <td>点击充值</td>
                   <td>ghw_initiated_payment</td>
                   <!-- <td><button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#data_settings">设置</button></td> -->
-                  <td><button type="button" class="btn btn-info btn-block" onclick="showDataSettings4Event('ghw_initiated_payment')">设置</button></td>
+                  <td><button type="button" class="btn btn-success btn-block" onclick="showDataSettings4Event('ghw_initiated_payment')">设置</button></td>
                 </tr>
                 <tr>
                   <td>充值完成</td>
                   <td>ghw_payment</td>
-                  <td><button type="button" class="btn btn-info btn-block" onclick="showDataSettings4Event('ghw_payment')">设置</button></td>
+                  <td><button type="button" class="btn btn-success btn-block" onclick="showDataSettings4Event('ghw_payment')">设置</button></td>
                 </tr>
                 <tr>
                   <td>点击购买</td>
                   <td>ghw_initiated_purchase</td>
-                  <td><button type="button" class="btn btn-info btn-block" onclick="showDataSettings4Event('ghw_initiated_purchase')">设置</button></td>
+                  <td><button type="button" class="btn btn-success btn-block" onclick="showDataSettings4Event('ghw_initiated_purchase')">设置</button></td>
                 </tr>
                 <tr>
                   <td>充值购买</td>
                   <td>ghw_purchase</td>
-                  <td><button type="button" class="btn btn-info btn-block" onclick="showDataSettings4Event('ghw_purchase')">设置</button></td>
+                  <td><button type="button" class="btn btn-success btn-block" onclick="showDataSettings4Event('ghw_purchase')">设置</button></td>
                 </tr>
                 <tr>
                   <td>玩家等级增长</td>
                   <td>ghw_level_achieved</td>
-                  <td><button type="button" class="btn btn-info btn-block" onclick="showDataSettings4Event('ghw_level_achieved')">设置</button></td>
+                  <td><button type="button" class="btn btn-success btn-block" onclick="showDataSettings4Event('ghw_level_achieved')">设置</button></td>
                 </tr>
                 <tr>
                   <td>创建游戏角色</td>
                   <td>ghw_user_create</td>
-                  <td><button type="button" class="btn btn-info btn-block" onclick="showDataSettings4Event('ghw_user_create')">设置</button></td>
+                  <td><button type="button" class="btn btn-success btn-block" onclick="showDataSettings4Event('ghw_user_create')">设置</button></td>
                 </tr>
                 <tr>
                   <td>更新用户资料</td>
                   <td>ghw_user_info_update</td>
-                  <td><button type="button" class="btn btn-info btn-block" onclick="showDataSettings4Event('ghw_user_info_update')">设置</button></td>
+                  <td><button type="button" class="btn btn-success btn-block" onclick="showDataSettings4Event('ghw_user_info_update')">设置</button></td>
                 </tr>
                 <tr>
                   <td>玩家任务信息</td>
                   <td>ghw_task_update</td>
-                  <td><button type="button" class="btn btn-info btn-block" onclick="showDataSettings4Event('ghw_task_update')">设置</button></td>
+                  <td><button type="button" class="btn btn-success btn-block" onclick="showDataSettings4Event('ghw_task_update')">设置</button></td>
                 </tr>
                 <tr>
                   <td>玩家货币情况变更</td>
                   <td>ghw_gold_update</td>
-                  <td><button type="button" class="btn btn-info btn-block" onclick="showDataSettings4Event('ghw_gold_update')">设置</button></td>
+                  <td><button type="button" class="btn btn-success btn-block" onclick="showDataSettings4Event('ghw_gold_update')">设置</button></td>
                 </tr>
                 <tr>
                   <td>导入用户</td>
                   <td>ghw_user_import</td>
-                  <td><button type="button" class="btn btn-info btn-block" onclick="showDataSettings4Event('ghw_user_import')">设置</button></td>
+                  <td><button type="button" class="btn btn-success btn-block" onclick="showDataSettings4Event('ghw_user_import')">设置</button></td>
                 </tr>
                 <tr>
                   <td>自定义事件</td>
                   <td>ghw_self_</td>
-                  <td><button type="button" class="btn btn-info btn-block" onclick="showDataSettings4Event('ghw_self_')">设置</button></td>
+                  <td><button type="button" class="btn btn-success btn-block" onclick="showDataSettings4Event('ghw_self_')">设置</button></td>
                 </tr>
               </tbody>
             </table>
@@ -115,7 +115,7 @@
                               <td id="wing_default_event_name"></td>
                             </tr>
                             <tr>
-                              <td>事件值</td>
+                              <td>事件值,一般用于累加</td>
                               <td><input id="wing_default_event_value" class="form-control" type="number" value="0"></td>
                             </tr>
                           </tbody>
@@ -141,10 +141,10 @@
                               <td>事件名称</td>
                               <td><input id="af_event_name" class="form-control" type="text" value=""></td>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                               <td>事件值</td>
                               <td><input id="af_event_value" class="form-control" type="number" value=""></td>
-                            </tr>
+                            </tr> -->
                           </tbody>
                         </table>
                         <!-- appsflyer事件定义 结束 -->
@@ -169,10 +169,10 @@
                             <td>事件名称</td>
                             <td><input id="fb_event_name" class="form-control" type="text" value=""></td>
                           </tr>
-                          <tr>
+                          <!-- <tr>
                             <td>事件值</td>
                             <td><input id="fb_event_value" class="form-control" type="number" value=""></td>
-                          </tr>
+                          </tr> -->
                         </tbody>
                       </table>
                       <!-- facebook事件定义 结束 -->
