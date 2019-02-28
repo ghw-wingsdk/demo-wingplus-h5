@@ -4,11 +4,11 @@ function colseModel(id) {
     $('#info_table2').show(100);
 }
 
-function isCG(){
+function checkCG(){
     return getUrlParams('sdkToken')==null?false:true;
 }
 
-function isFBCanvas(){
+function checkFBCanvas(){
     if((document.referrer && document.referrer.indexOf("apps.facebook.com") > -1)
     || getUrlParams('from') == 'fbcanvas'){
         return true;

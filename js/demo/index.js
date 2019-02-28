@@ -5,10 +5,10 @@ $(function(){
     wingplus.init({
         // appId: 'testLogin', //测试环境
         // appKey: 'abc', //测试环境
-        appId: 'f7f9a9d18da611e5a0be000d3a906774', //测试环境
-        appKey: 'CFHF7nQCCaojCX6Sm4eT1GEIWRprimgX', //测试环境
-        // appId: '0befcc31aab711e5a22602c85f0429f5', //生产环境
-        // appKey: 'GlKO1XOwNYhi8Kc3L2Kd1rOzhITc6VDX', //生产环境
+        // appId: 'f7f9a9d18da611e5a0be000d3a906774', //测试环境
+        // appKey: 'CFHF7nQCCaojCX6Sm4eT1GEIWRprimgX', //测试环境
+        appId: '0befcc31aab711e5a22602c85f0429f5', //生产环境
+        appKey: 'GlKO1XOwNYhi8Kc3L2Kd1rOzhITc6VDX', //生产环境
         sdkType: 'html5',
         // platform: 'html5',
         debug: true,
@@ -19,12 +19,12 @@ $(function(){
         $("#bindModel").show(500);
     });
 
-    if(isCG()){
+    if(checkCG()){
         //CG平台不应该显示接口登录
         $("#api_login").hide();
         //直接登录
         login();
-    }else if(isFBCanvas()){
+    }else if(checkFBCanvas()){
         //Facebook canvas平台不显示登录选项
         $("#login_ui").hide();
         $("#api_login").hide();

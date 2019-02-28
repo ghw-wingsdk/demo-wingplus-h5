@@ -20,7 +20,7 @@ var pay = {
                         payTypeSelect = "<select id='pay_type' class='form-control' disabled='disabled' style='width:100px;background-color:#CCCCCC;'>\n";
                         payTypeSelect = payTypeSelect + "<option value=''>未配置</option>\n";
                         
-                    }else if(isFBCanvas()){
+                    }else if(checkFBCanvas()){
                         //payTypeSelect = "FACEBOOK";
                         payTypeSelect = "<select id='pay_type' class='form-control' disabled='disabled' style='width:100px;background-color:#CCCCCC;'>\n";
                         // payTypeSelect = payTypeSelect + "<option value='FACEBOOK'>FACEBOOK</option>\n";
@@ -102,7 +102,7 @@ var pay = {
             serverId: '3231',
             gameUserId: '32',
             productName: productName,
-            extInfo:"{'ext':'wingsdk testing extInfo...'}",
+            extInfo:'{"deliverUrl":"http://sdk-test1.wingsdk.cn/sdk_bkd_qa/cp/notice.do","otherInfo":"otherInfo","merId":""}',
             success: function (result) {
                 $("#payModel").hide(500);
                 var s = JSON.stringify(result) ? JSON.stringify(result) : "web支付请以发货为准";
