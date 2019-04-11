@@ -49,9 +49,13 @@ var device = {
     },
       
     hideTooltip: function() {
-        setTimeout(function() {
-          $('#client_id_copy').tooltip('hide');
-        }, 2000);
+        // setTimeout(function() {
+        //   $('#client_id_copy').tooltip('hide');
+        // }, 2000);
+        wait(2000).then(function() {
+              $('#client_id_copy').tooltip('hide');
+            }
+        )
     }
 
 }

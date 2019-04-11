@@ -17,6 +17,20 @@ function checkFBCanvas(){
     }
 }
 
+function checkArmorgames(){
+    if(getUrlParams('from') == 'armorgames'){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+function wait(duration){
+    return new Promise(function(resolve, reject) {
+        setTimeout(resolve,duration);
+    })
+}
+
 //获取当前参数
 function getUrlParams(paramName){
     var reg = new RegExp("(^|&)" + paramName + "=([^&]*)(&|$)", "i");
