@@ -31,11 +31,22 @@ var device = {
 
         var clientId = localStorage.getItem("ghw_wing_client_id");
         if(!clientId){
-            clientId = util.getCookie("ghw_wing_client_id");
+            clientId = this.readCookie("ghw_wing_client_id");
         }
 
         $("#client_id").text(clientId);
     },
+
+    
+    readCookie: function(name) {
+        var allCookie = '' + document.cookie;
+        var index = allCookie.indexOf(name);
+        if (name === undefined || name === '' || index === -1) return '';
+        var ind1 = allCookie.indexOf(';', index);
+        if (ind1 == -1) ind1 = allCookie.length;
+        return unescape(allCookie.substring(index + name.length + 1, ind1));
+    },
+
 
     showTooltip: function(message) {
         // $('#client_id_copy').tooltip('hide')

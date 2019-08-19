@@ -24,6 +24,22 @@ function checkArmorgames(){
         return false;
     }
 }
+function checkKongregate(){
+    if(getUrlParams('from') == 'kongregate'){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+function checkY8(){
+    if(getUrlParams('from') == 'y8'){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 
 function wait(duration){
     return new Promise(function(resolve, reject) {
@@ -38,6 +54,8 @@ function getUrlParams(paramName){
     if (r != null) return unescape(r[2]);
     return null;
 }
+
+
 
 //窗口随着屏幕的大小自适应
 function window_size(){

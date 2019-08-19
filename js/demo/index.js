@@ -38,6 +38,16 @@ $(function(){
         $("#api_login").hide();
         //直接登录
         login();
+    }else if(checkKongregate()){
+        $("#login_ui").hide();
+        $("#api_login").hide();
+        //直接登录
+        login();
+    }else if(checkY8()){
+        $("#login_ui").hide();
+        $("#api_login").hide();
+        //直接登录
+        login();
     }
 
     // setTimeout(() => {
