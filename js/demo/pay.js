@@ -33,6 +33,27 @@ var pay = {
                             }
                         }
 
+                    }else if(checkKongregate()){
+                        payTypeSelect = "<select id='pay_type' class='form-control' disabled='disabled' style='width:100px;background-color:#CCCCCC;'>\n";
+                        payTypeSelect = payTypeSelect + "<option value=''>空</option>\n";
+                        for(payType in productList[i].payChannel){
+                            if(payType === "KONGREGATE"){
+                                payTypeSelect = payTypeSelect + "<option selected = 'selected' value='" + payType + "'>" + payType + "</option>\n";
+                            }else{
+                                payTypeSelect = payTypeSelect + "<option value='" + payType + "'>" + payType + "</option>\n";
+                            }
+                        }
+                    }else if(checkMiracleGames()){
+                        payTypeSelect = "<select id='pay_type' class='form-control' disabled='disabled' style='width:100px;background-color:#CCCCCC;'>\n";
+                        payTypeSelect = payTypeSelect + "<option value=''>空</option>\n";
+                        for(payType in productList[i].payChannel){
+                            if(payType === "MIRACLEGAMES"){
+                                payTypeSelect = payTypeSelect + "<option selected = 'selected' value='" + payType + "'>" + payType + "</option>\n";
+                            }else{
+                                payTypeSelect = payTypeSelect + "<option value='" + payType + "'>" + payType + "</option>\n";
+                            }
+                        }
+
                     }else if(productList[i] && !$.isEmptyObject(productList[i].payChannel)){
                         payTypeSelect = "<select id ='pay_type' class='form-control' style='width:100px;'>\n";
                         payTypeSelect = payTypeSelect + "<option value=''>空</option>\n";

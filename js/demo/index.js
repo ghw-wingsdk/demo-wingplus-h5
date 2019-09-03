@@ -48,6 +48,11 @@ $(function(){
         $("#api_login").hide();
         //直接登录
         login();
+    }else if(checkMiracleGames()){
+        $("#login_ui").hide();
+        $("#api_login").hide();
+        //直接登录
+        login();
     }
 
     // setTimeout(() => {

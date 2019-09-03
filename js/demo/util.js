@@ -40,6 +40,16 @@ function checkY8(){
     }
 }
 
+function checkMiracleGames(){
+    if(getUrlParams('from') == 'miraclegames'){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+
+
 
 function wait(duration){
     return new Promise(function(resolve, reject) {
