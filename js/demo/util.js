@@ -48,6 +48,14 @@ function checkMiracleGames(){
     }
 }
 
+function checkR2Games(){
+    if(getUrlParams('from') == 'r2games'){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 
 
 

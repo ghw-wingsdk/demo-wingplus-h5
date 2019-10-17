@@ -17,6 +17,7 @@ $(function(){
         logSize: 10
     });
 
+ 
     $("#bind").click(function (){
         $("#bindModel").show(500);
     });
@@ -53,6 +54,12 @@ $(function(){
         $("#api_login").hide();
         //直接登录
         login();
+    }else if(checkR2Games()){
+        
+        $("#login_ui").hide();
+        $("#api_login").hide();
+        //直接登录
+        login();
     }
 
     // setTimeout(() => {
@@ -68,16 +75,16 @@ function login(){
     wingplus.user.login({
         // platform: 'FACEBOOK',
         // FB:true,
-        success: function(){
-            console.log("登录成功");
+        success: function(result){
+            console.log("登录成功",result);
             showResult('登录', '登录成功');
         },
-        fail: function(){
-            console.log("登录失败");
+        fail: function(result){
+            console.log("登录失败",result);
             showResult('登录', '登录失败');
         },
-        cancel: function(){
-            console.log("登录取消");
+        cancel: function(result){
+            console.log("登录取消",result);
             showResult('登录', '登录取消');
         }
     });
