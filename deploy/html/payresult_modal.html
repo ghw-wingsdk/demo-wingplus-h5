@@ -21,7 +21,6 @@ body {
 	width: 100%;
 	font-family: "Arial";
     /* color: #ffffff; */
-    color: rgba(255, 255, 255, 1);
 }
 .box{
     display: flex;
@@ -42,11 +41,11 @@ body {
 
 .item{
     width: 30vw;
-    height: 8.15vw;
-    margin-right: 1vw;
-    margin-left: 1vw;
+    height: 5vw;
+    margin-right: auto;
+    margin-left: auto;
     color: white;
-	font-size: 4vw;
+	font-size: 2.5vw;
     border: 1px solid rgba(238,238,238,1);
 }
 
@@ -62,15 +61,16 @@ body {
 .nopic{
     background-color: #337ab7;
     padding-top: 0.5vw;
-	height: 7.4vw;
+	height: 5vw;
 	text-align: center;
-	line-height: 7.4vw;
+	line-height: 5vw;
+
 }
 
 .item img{
     width:100%;
     height: auto;
-    height: -webkit-fill-available;
+    /* height: -webkit-fill-available; */
 }
 
 .item:hover{
@@ -95,7 +95,7 @@ body {
 	right: 0;
 	bottom: 0;
 	width: 72vw;
-	height: 50vw;
+	height: 38vw;
 	margin: auto;
     background-color: rgba(255, 255, 255, 1);
 	z-index: 99;
@@ -108,7 +108,7 @@ body {
 	width: 100%;
 	height: 7vw;
 	/* background:url('data:image/png;base64,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') no-repeat; */
-	background:linear-gradient(0deg,rgba(23,135,221,1) 0%,rgba(48,213,245,1) 100%);
+	background: rgba(255,255,255,1) ;
 	background-size: 100%;
 	box-sizing: border-box;
 }
@@ -133,7 +133,7 @@ body {
 .modal_title {
     /* color: #fff; */
     color: rgba(255, 255, 255, 1);
-	font-size: 4vw;
+	font-size: 3.3vw;
     letter-spacing: 0.2vw;
 	margin-left: 0.4vw;
 	font-family:MicrosoftYaHei-Bold;
@@ -144,7 +144,7 @@ body {
     right: 2vw;
     width: 3.5vw;
     height: 3.5vw;
-    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAABTElEQVRYR9WXMU4DQQxFnxsqrgINqTgG4gwcAFEgDhClCD25Q8QxKKk4ChWN0UgJmmx2h+/ZXTJsbfu/9diesdHIZ41w8APi7ufAM3ABrM3sdQ5Id78BHoAP4N7MPpNODrIBrjLxlZltp4Rx91vgMYv5bmZ3XZA34KwjPBlMD0SS+jKz6y5IStlTTwZGwwxAJKnlvgQOirXgUA2jxjzqGtVRqZ1IrN72jQQYAorGGJwj0UA5UI1vcaDVBKzxOeiaKVJcCyGBJCNFQLEpFbh815SEdgL5xNxrym0vg/ySmb6flSHkoxE7IjcLQVSBCJkJQ/xvkELR/t3RiBDhjgkdTRPtqwwrxWbUQIsIRGy7UO1femP+rsa33YdRzd9M8YRo7/G828BOv064ezML1guwyM676hYtDS115UxL+Bq4POkSrixMc9qEnopzgnwDYq0IMrmpjHEAAAAASUVORK5CYII=') no-repeat;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QA/wD/AP+gvaeTAAAAB3RJTUUH4AsCDSEAgw7OCAAAA9pJREFUWMPtV81OG0kQ/qp6PLaxF+K1IfI5FydoEw74DZABcfajIgTCL+DbBkHiyx5Rgr2AZKzB0zPVudCjnnGPQbnsZUsauT31/1V1Vw/wP/3HRMUXxpjXlYi8739HN/t3cnKSGSEiMDOCIAAzQ0SgtYaI5JycnZ0BAI6Pj3MOmBmVSiXTTZIk07UBnJ6eAgACXwbGGKRpChEBEcEYkz2u7NHRUS5ouxYRxHGc0y1DSQHAcDhEHMfeQFwDPoiJKHNUTKbo3C3B3t4ebm5uwOvqaIzBcrn0GirW011beVe3mJQl9hkAgOvrawB4CsPQADC1Wq3paypfYPV6vQnAvOg+jcfjnKzryxuAMQa7u7sGQMMqPT8/z4motS5jAGDmVhRFcyfzRr/fN7msmVcDcI3FcZzreMfYPTO/Qwltb2//KSL3PlS01l6k2XVsFSuVCgBARHK/Lx3+0Ol0WsVaRlHUuru7+9fugmKvhGG4vgdsxg7zUxAEMMaAmXPNNJ1O77vdboZEt9t9t7GxcW8duPJEBBH55CbqBhi4jAJ037TWX5RSf/v28e3t7cN4PCZmxv7+/oNPhoiQJMkXpdQ3950rGxSVXFJKfRWRz8z81fJFBMyMNE3R7/cNESFN01xjWUci8lkpdVXssZycXRweHsIn+GLoLzeIdSQiUErhJfAr39YDgPPz83wPrCkFmPmKmXddftkJqZQCEe0y89VrdnMIAMBgMFibXb1e346i6K4MCSJCtVrdWS6XU3c2FOni4iJbB0UD66Kez+dTO+1sJ9u17fw0Tac+ZOzMKFJWgsFgUHpev9S2zczGOmLmrPHcBtRam3a73S46d+26SL86jACg3W53iGjmQ8k9pOwzm81mItJZN0VzAQyHwxWGVWo2mzuz2Wzqc2izL5mU062trZ0y59YnF5268Debzffz+fynL2MAaDQarUaj0fLxjTF4fHz8ubm5+d5ne6UExelWq9U6i8XiR7EvbL3DMOwtFovHxWLxGIZhzzq3iNimm8/nP2q1WsfXE7kAmDnHiKJomqbpSg2ZGUmS9OI4nth3WutJvV7v2dnhXsVEBFEUTV3n3nHsOrc3GU9dobXuBUEwKfKiKJporXtl17PlcrkeARfqarXq3bMi8lEpNSnqWFJKTUTkoy/warXqPTlXxrGlIAj+cGsfBMEHIvpedkO2v0T0XSn1wQ3A2rIy3nFcDEBr/QSAbE2TJFlBpGyfp2n6j6urtV65tpeWYAUiXjmrvEH46C1fUJnEwcHBm4xaw2X3/XWDyqXLy8s8Am8la4iIMBqNMBqNSr8P3kK/AOKdSHxDuCHGAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE2LTExLTAyVDEzOjMzOjAwKzAxOjAw1wGs7QAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxNi0xMS0wMlQxMzozMzowMCswMTowMKZcFFEAAAAASUVORK5CYII=') no-repeat;
     background-size: contain;
 }
 .modal_box {
@@ -158,7 +158,19 @@ body {
 	-webkit-overflow-scrolling: touch;
 }
 
-@media screen and (orientation:landscape) {
+.content{
+	margin-top: 7vw;
+	margin-bottom: 7vw;
+	text-align: center;
+	font-size: 3vw;
+
+}
+
+.btn-cancle{
+	background: #e2e2e2;
+}
+
+@media screen and (min-width: 720px) {
     .modal_pop {
         transform: scale(0.8, 0.8);
     }
@@ -176,23 +188,13 @@ body {
     }
 }
 
-@media screen and (orientation:portrait) and (max-width: 720px){
+@media screen and (orientation:portrait) and (max-width: 720px) {
     .modal_pop {
         transform: scale(1.2, 1.2);
     }
 }</style>
     <script>function modalPostMessage(value){
-    window.parent.postMessage('{"pay":"'+value+'"}', "*"); //*允许跨域
-}
-
-function expandPaymentMethods(){
-    var payMethodsDiv = document.getElementById('payMethodsDiv')
-    payMethodsDiv.classList.remove("on");
-    var divMore =  document.getElementById('divMore')
-    var _parent = divMore.parentNode;
-    if(_parent){
-        _parent.removeChild(divMore);
-    }
+    window.parent.postMessage('{"R2payReuslt":"'+value+'"}', "*"); //*允许跨域
 }
 
 //增加监听
@@ -200,31 +202,17 @@ window.addEventListener("message",function(obj){
     console.log(obj);
     if(obj.data){
         try{
-            // console.log("receive msg:"+JSON.stringify(obj.data));
-            var paywaysArray = obj.data.payways;
-            //商品信息
-            loadProductInfo(obj.data.appName,obj.data.productInfo)
-
-            if(paywaysArray && paywaysArray.length > 0 && paywaysArray[0]['id']){
-                var payMethodsDiv = this.document.getElementById('payMethodsDiv');
-                if(payMethodsDiv){
-                    //带商品信息的支付页面处理方式
-                    loadPayMenthods(paywaysArray)
-                }else{
-                    //原支付方法页面处理方式
-                    var payModalBoxContent = loadPayWays(paywaysArray);
-                    var payModalBox = this.document.getElementById('pay_modal_box');
-                    if(payModalBox){
-                        payModalBox.appendChild(payModalBoxContent);
-                    }
-                }
-            }
-                        
+            var loginwaysArray = obj.data.loginways;
             //是合法消息就国际化，避免列表为空时没有国际化
-            if(paywaysArray){
-                translate(obj.data.i18n);
-            }
-            
+            translate(obj.data.i18n);
+
+             //  var loginModalBoxContent = loadLoginWays(obj.data.i18n);
+             //  var loginModalBox = this.document.getElementById('login_modal_box');
+             //  if(loginModalBox){
+               //    loginModalBox.appendChild(loginModalBoxContent);
+              // }
+
+            // this.console.log("translateDom:" + translateDom);
         }catch(error){
             console.warn('Got unknown message, drop it.' + error);
         }
@@ -237,6 +225,7 @@ window.addEventListener("message",function(obj){
  * @param {国际化对象} langArray 
  */
 function doTranslate(srcString, langArray){
+    // var regExpKey = /<wingi18n:amdi18n\..*?\/>/ig;//定义正则表达式，将获取html中所有i18n key
     var regExpKey = /{{wingi18n:amdi18n\..*?}}/ig;//定义正则表达式，将获取html中所有i18n key
     var i18nKeyArray = srcString.match(regExpKey);
     for(var index = 0; index < i18nKeyArray.length; index++){
@@ -259,10 +248,7 @@ function translate(langArray){
     var i18nItems = document.getElementsByClassName('i18n');
     for(var i=0; i<i18nItems.length; i++){
         i18nItems[i].innerText = doTranslate(i18nItems[i].innerText, langArray);
-        if(i18nItems[i].className.indexOf('mobile_')==-1){
-            i18nItems[i].style.display = "block";
-        }
-        // console.log("i18nItems[i].className::"+i18nItems[i].className)
+        i18nItems[i].style.display = "block";
     }
 };
 
@@ -282,7 +268,7 @@ function imgLoadErrorEvent(platformName) {
 }
 
 /**
-     * 渲染支付列表
+     * 渲染登录列表
      * 使用flexbox布局渲染，类似如下形式
      * <div class="flexbox">
      *       <div class="column">
@@ -295,342 +281,67 @@ function imgLoadErrorEvent(platformName) {
      *       </div>
      *  </div>
      */
-    function loadPayWays(data){
-        //判断支付方式是否为空
-        if(!data || data.length == 0){
-            return;
-        }
 
-        var payWayDiv = document.createElement('div');
+    function switchName(titlekey,langArray)
+    {
+        if(langArray){
+            return langArray[titlekey];
+        }
+        return titlekey;
+    }
+    
+    function loadLoginWays(langArray){
+ 
+        var loginWayDiv = document.createElement('div');
+        //<p style="margin-top: 70px;">支付是否成功呢！！！！！！！！！！！！！！！！！！</p>
+
+
         var flexBox = null;
         var item = null;
-        for(var k=0; k<data.length; k++){
+        for(var k=0; k<2; k++){
             //奇数项增加父类div
             if((k+1)%2 !== 0){
                 flexBox = document.createElement('div');
                 flexBox.className = 'column';
-
-                payWayDiv.appendChild(flexBox);
+                loginWayDiv.appendChild(flexBox);
             }
             // item = '<span href="javascript:void(0)" class="item" id="'+k+'"><img id="img_'+k+'"  src="'+data[k]+'" alt="'+k+'" onclick="modalPostMessage(\''+k+'\')"></span>';
-            //动态创建支付item
-            var platformName = data[k]['name'];
-            item = document.createElement('span');
-            item.className = "item";
-            item.id = platformName;
-            item.setAttribute("onclick", "modalPostMessage('"+platformName+"')");
+            //动态创建登录item
+            // var platformName = data[k]['platform'];
+            var  platformName=""
+            var  payresult=400;
+            if(k==0){
+                platformName = switchName("payfinish_title",langArray);
+                payresult    = 200;
+            }else if(k==1){
+                platformName = switchName("paycancenl_title",langArray);;
+                payresult    = 400;
 
+            }
+            item = document.createElement('span');
+            //item.className = "item";
+            item.className = "i18n";
+
+            
+            item.id = platformName;
+
+            item.setAttribute("onclick", "modalPostMessage('"+payresult+"')");
+  
             //动态创建img
             var img = document.createElement('img');
-            var imgUrl = data[k]['logoUrl'];
+            var imgUrl = "";
             img.id = "img_" + platformName;
-            img.src = imgUrl? imgUrl: "";
-            img.alt = platformName;
+            img.src = "";
+    
             img.setAttribute("onerror", "imgLoadErrorEvent('"+platformName+"')");
-
             item.appendChild(img);
             flexBox.appendChild(item);
         }
 
-        //不足偶数行创建一个空span补足偶数行，否则最后一行layout会有点问题
-        if(data.length % 2 !== 0){
-            item = document.createElement('span');
-            item.className = "dump_item";
-            flexBox.appendChild(item);
-        }
+ 
 
-        return payWayDiv;
-    }
-
-    function loadProductInfo(appName,productInfo){
-        if(!productInfo){
-            return
-        }
-
-        var spGameName = document.getElementById('spGameName')
-        if(spGameName) spGameName.textContent = appName
-        
-        var spName = document.getElementById('spProductName')
-        if(spName) spName.textContent = productInfo.productName
-        
-        var spPrice = document.getElementById('spProductPrice')
-        if(spPrice) spPrice.textContent = getCurrencySymbol(productInfo.productCurrencyCode) + productInfo.productAmount
-
-    }
-
-    function loadPayMenthods(data) {
-        // console.log("loadPayMenthods::"+JSON.stringify(data))
-        //判断支付方式是否为空
-        if(!data || data.length == 0){
-            return;
-        }
-        
-        var payMethodsBox = document.getElementById('payMethodsDiv');
-
-        var itemContainer = null;
-        var itemSpan = null;
-        var itemImg = null;
-        var itemText = null;
-        for(var k=0; k<data.length; k++){
-            var platformName = data[k]['name'];
-
-            if(k==0){
-                //第一位 Confirm and Pay
-                itemText = 'Confirm and Pay'
-            } else {
-                //其他位 Pay with Xxx
-                itemText = 'Pay with '+ getPaymentMethodName(platformName)
-            }
-            
-            //按钮容器
-            itemContainer = document.createElement('div');
-            itemContainer.className = 'mobile_payBtn'
-            payMethodsBox.appendChild(itemContainer)
-
-            //按钮图片
-            itemImg = document.createElement('img')
-            itemImg.className = 'mobile_payImg'
-            itemImg.alt = itemText
-            itemContainer.appendChild(itemImg)
-
-            //按钮文案
-            itemSpan = document.createElement('span')
-            itemSpan.setAttribute("onclick", "modalPostMessage('"+platformName+"')");
-            itemSpan.textContent = itemText
-            itemContainer.appendChild(itemSpan)
-
-        }
-
-        if(data.length>3){
-            //超出3个，显示更多按钮
-            var divMore =  document.getElementById('divMore')
-            divMore.style.display = ''
-        }else{
-            //小于等于3个，直接展开
-            expandPaymentMethods()
-        }
-
-    }
-
-    var currencySymbolMap = {
-        'AED': 'د.إ',
-        'AFN': '؋',
-        'ALL': 'L',
-        'AMD': '֏',
-        'ANG': 'ƒ',
-        'AOA': 'Kz',
-        'ARS': '$',
-        'AUD': '$',
-        'AWG': 'ƒ',
-        'AZN': '₼',
-        'BAM': 'KM',
-        'BBD': '$',
-        'BDT': '৳',
-        'BGN': 'лв',
-        'BHD': '.د.ب',
-        'BIF': 'FBu',
-        'BMD': '$',
-        'BND': '$',
-        'BOB': '$b',
-        'BRL': 'R$',
-        'BSD': '$',
-        'BTC': '฿',
-        'BTN': 'Nu.',
-        'BWP': 'P',
-        'BYR': 'Br',
-        'BYN': 'Br',
-        'BZD': 'BZ$',
-        'CAD': '$',
-        'CDF': 'FC',
-        'CHF': 'CHF',
-        'CLP': '$',
-        'CNY': '¥',
-        'COP': '$',
-        'CRC': '₡',
-        'CUC': '$',
-        'CUP': '₱',
-        'CVE': '$',
-        'CZK': 'Kč',
-        'DJF': 'Fdj',
-        'DKK': 'kr',
-        'DOP': 'RD$',
-        'DZD': 'دج',
-        'EEK': 'kr',
-        'EGP': '£',
-        'ERN': 'Nfk',
-        'ETB': 'Br',
-        'ETH': 'Ξ',
-        'EUR': '€',
-        'FJD': '$',
-        'FKP': '£',
-        'GBP': '£',
-        'GEL': '₾',
-        'GGP': '£',
-        'GHC': '₵',
-        'GHS': 'GH₵',
-        'GIP': '£',
-        'GMD': 'D',
-        'GNF': 'FG',
-        'GTQ': 'Q',
-        'GYD': '$',
-        'HKD': '$',
-        'HNL': 'L',
-        'HRK': 'kn',
-        'HTG': 'G',
-        'HUF': 'Ft',
-        'IDR': 'Rp',
-        'ILS': '₪',
-        'IMP': '£',
-        'INR': '₹',
-        'IQD': 'ع.د',
-        'IRR': '﷼',
-        'ISK': 'kr',
-        'JEP': '£',
-        'JMD': 'J$',
-        'JOD': 'JD',
-        'JPY': '¥',
-        'KES': 'KSh',
-        'KGS': 'лв',
-        'KHR': '៛',
-        'KMF': 'CF',
-        'KPW': '₩',
-        'KRW': '₩',
-        'KWD': 'KD',
-        'KYD': '$',
-        'KZT': 'лв',
-        'LAK': '₭',
-        'LBP': '£',
-        'LKR': '₨',
-        'LRD': '$',
-        'LSL': 'M',
-        'LTC': 'Ł',
-        'LTL': 'Lt',
-        'LVL': 'Ls',
-        'LYD': 'LD',
-        'MAD': 'MAD',
-        'MDL': 'lei',
-        'MGA': 'Ar',
-        'MKD': 'ден',
-        'MMK': 'K',
-        'MNT': '₮',
-        'MOP': 'MOP$',
-        'MRO': 'UM',
-        'MRU': 'UM',
-        'MUR': '₨',
-        'MVR': 'Rf',
-        'MWK': 'MK',
-        'MXN': '$',
-        'MYR': 'RM',
-        'MZN': 'MT',
-        'NAD': '$',
-        'NGN': '₦',
-        'NIO': 'C$',
-        'NOK': 'kr',
-        'NPR': '₨',
-        'NZD': '$',
-        'OMR': '﷼',
-        'PAB': 'B/.',
-        'PEN': 'S/.',
-        'PGK': 'K',
-        'PHP': '₱',
-        'PKR': '₨',
-        'PLN': 'zł',
-        'PYG': 'Gs',
-        'QAR': '﷼',
-        'RMB': '￥',
-        'RON': 'lei',
-        'RSD': 'Дин.',
-        'RUB': '₽',
-        'RWF': 'R₣',
-        'SAR': '﷼',
-        'SBD': '$',
-        'SCR': '₨',
-        'SDG': 'ج.س.',
-        'SEK': 'kr',
-        'SGD': '$',
-        'SHP': '£',
-        'SLL': 'Le',
-        'SOS': 'S',
-        'SRD': '$',
-        'SSP': '£',
-        'STD': 'Db',
-        'STN': 'Db',
-        'SVC': '$',
-        'SYP': '£',
-        'SZL': 'E',
-        'THB': '฿',
-        'TJS': 'SM',
-        'TMT': 'T',
-        'TND': 'د.ت',
-        'TOP': 'T$',
-        'TRL': '₤',
-        'TRY': '₺',
-        'TTD': 'TT$',
-        'TVD': '$',
-        'TWD': 'NT$',
-        'TZS': 'TSh',
-        'UAH': '₴',
-        'UGX': 'USh',
-        'USD': '$',
-        'UYU': '$U',
-        'UZS': 'лв',
-        'VEF': 'Bs',
-        'VND': '₫',
-        'VUV': 'VT',
-        'WST': 'WS$',
-        'XAF': 'FCFA',
-        'XBT': 'Ƀ',
-        'XCD': '$',
-        'XOF': 'CFA',
-        'XPF': '₣',
-        'YER': '﷼',
-        'ZAR': 'R',
-        'ZWD': 'Z$'
-    }
-
-    // 获取货币符号
-    function getCurrencySymbol(currencyCode){
-        if (typeof currencyCode !== 'string') return ''
-        var code = currencyCode.toUpperCase()
-        if (!currencySymbolMap.hasOwnProperty(code)) return ''
-        var sy = currencySymbolMap[code]
-        // console.log('currencyCode:'+currencyCode+",Symbol："+sy)
-        return sy
-    }
-
-    var paymentMethodsMap = {
-        "APPLE":"Apple",
-        "BOACOMPRA":"BoaCompra",
-        "FACEBOOK":"Facebook",
-        "GOOGLE":"Google",
-        "HUAWEI_HMS":"Huawei",
-        "KONGREGATE":"Kongregate",
-        "LATAMGATEWAY_PICPAY":"LatamGateway_Picpay",
-        "LATAMGATEWAY_PIX":"LatamGateway_Pix",
-        "MIRACLEGAMES":"MiracleGames",
-        "MOL":"Mol",
-        "PAYMENTWALL":"Paymentwall",
-        "PAYPAL":"PayPal",
-        "R2GAMES":"R2Games",
-        "WA_SANDBOX":"Wa_Sandbox",
-        "XSOLLA":"Xsolla",
-    }
-
-    /**
-     * 获取支付名称
-     * @param {支付方式} payMethod 
-     * @returns 
-     */
-    function getPaymentMethodName(payMethod){
-        if (typeof payMethod !== 'string') return payMethod
-        var method = payMethod.toUpperCase()
-        if (!paymentMethodsMap.hasOwnProperty(method)) return payMethod
-        var name = paymentMethodsMap[method]
-        // console.log('payMethod:'+payMethod+",name："+name)
-        return name
-    }
-
-    </script>
+        return loginWayDiv;
+    }</script>
 </head>
 <body>
 
@@ -639,14 +350,30 @@ function imgLoadErrorEvent(platformName) {
 <div class="modal_pop">
     
     <div class="modal_top">
-        <span class="modal_logo"></span>
-        <span class="modal_title i18n hidden">{{wingi18n:amdi18n.recharge_title}}</span>
-        <button type="button" class="modal_close" onclick="modalPostMessage('')"></button>
+        <span class="modal_title i18n hidden">{{wingi18n:amdi18n.payresult_title}}</span>
+        <button type="button" class="modal_close" onclick="modalPostMessage('400')"></button>
+
+        
     </div>
 
     
-    <div class="modal_box" id="pay_way_list">
-        <div class="box" id="pay_modal_box">
+    <div class="modal_box" id="login_way_list">
+        <div class="box" id="login_modal_box">
+        <div>
+            
+            <p class="content i18n">{{wingi18n:amdi18n.payresult_content}}</p>
+
+            <div class="column">
+                <span class="item nopic" id="Pay Finished" onclick="modalPostMessage('200')">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">
+                            <div class="i18n">{{wingi18n:amdi18n.payfinish_title}}</div>
+                            
+
+                        </font></font></span>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

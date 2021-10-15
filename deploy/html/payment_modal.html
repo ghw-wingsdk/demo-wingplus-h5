@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <meta name="apple-touch-fullscreen" content="YES">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no">
+  <meta content="email=no" name="format-detection">
+  <meta http-equiv="Expires" content="-1">
+  <meta http-equiv="pragram" content="no-cache">
+  <style>*{margin: 0;padding: 0;border: 0;outline: 0;}
+img{width: 100%;height: 100%;}
+.clearfix:after{content: '';display: table;clear: both;}
+.op0{opacity: 0;}
+/*20210929新增*/
+a,input, button,select{
+  text-decoration: none;
+  /*a标签点击图片有阴影处理*/
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -webkit-user-select:text !important;
+}
+
+
+html,body{height: 100%;}
+body{width: 100%;font-size: 1rem;font-family: "Arial";color: #ffffff;}
+
+/*弹窗*/
+.mobile_mask,.mobile_mask2{position:absolute;top: 0;bottom: 0;left: 0;right: 0; width: 100%;background-color: rgba(0,0,0,0.4);z-index: 99;}
+.mobile_mask2{background-color: #ffffff;}
+.mobile_pop,.mobile_bind_pop,.mobile_pay_pop{position: absolute;top: 0;left: 0;right: 0;bottom: 0; width: 80%; height: 20rem;margin: auto;background-color: #ffffff; z-index: 99;overflow: hidden;}
+
+
+/*20210929修改/增加*/
+.mobile_payPop{height: 80%;background-color: #f6f6f6;overflow-y: auto;}
+.mobile_goodsInfo,.mobile_payMethodsBox{width: 93%;color: #999999;font-size: 0.8rem;padding: 2.5% 3.5%;line-height: 2;background-color: #ffffff;}
+.mobile_goodsBox{border: 1px solid #f6f6f6;min-height: 3rem;padding: 0.5rem 1rem;}
+.mobile_payMethodsBox.on{height: 12.2rem;overflow: hidden;}
+.mobile_goodsName{font-size: 0.9rem;line-height: 1.6;}
+.mobile_goodsName span{color: #4c4c4c;}
+.mobile_goodsName .mobile_goodsPrice{color: #f00;}
+.mobile_payMethods{font-size: 0.8rem;color: #999;line-height: 2.2;text-indent: 3.5%;margin-top: 1%;}
+.mobile_payBtn,.mobile_payCompleteBtn{position: relative; display: block;width: 92%;margin: 2% auto;}
+.mobile_payBtn img{display: block;width: 100%;}
+.mobile_payBtn span,.mobile_payCompleteBtn span{position: absolute;top: 0;left: 0;width: 100%;line-height: 2.8; text-align: center;color: #fff;font-size: 1.1rem;text-decoration: none;}
+.mobile_more{text-align: center}
+.mobile_more div{display: inline;}
+.mobile_more span{position: relative;}
+.mobile_more span:after{position: absolute;content: "";top: -0.6rem;left: -0.5rem;border: 0.5rem solid transparent;border-top: 0.5rem solid #fff;}
+.mobile_goodsMore{font-size: 1rem;color: #999;line-height: 2;text-align: center;background-color: #ffffff;padding-bottom: 2%;}
+.mobile_goodsMore span{display: inline-block;vertical-align: -0.5rem;margin-left: 0.3rem; position: relative;border: 0.5rem solid transparent;border-top: 0.5rem solid #999;}
+.mobile_goodsMore.on span{display: inline-block;vertical-align: 0.1rem;margin-left: 0.3rem; position: relative;border: 0.5rem solid transparent;border-bottom: 0.5rem solid #999;}
+.mobile_goodsMore span:after{position: absolute;content: "";top: -0.6rem;left: -0.5rem;border: 0.5rem solid transparent;border-top: 0.5rem solid #fff;}
+.mobile_goodsMore.on span:after{position: absolute;content: "";top: -0.4rem;left: -0.5rem;border: 0.5rem solid transparent;border-bottom: 0.5rem solid #fff;}
+.mobile_goodsTips{width: 93%;color: #4c4c4c;line-height: 1.5;font-size: 0.7rem;margin: 3% auto;padding-bottom: 2%;}
+.mobile_goodsTips span{color: #999;}
+.mobile_payComplete{padding-top: 4rem;height: 18rem;background-color: #ffffff;-webkit-border-radius: 10px;border-radius: 10px; -webkit-box-sizing: border-box;box-sizing: border-box;}
+.mobile_payCompleteBtn{width: 50%;height: 3rem;margin-bottom: 10%;}
+.mobile_payTitle{font-size: 1.5rem;padding:1rem;text-align: center;color: #000;}
+.pay_close{position: absolute;top: 5%;right: 5%;width: 8%;}
+
+
+
+
+
+.mobile_top{position: relative; width: 100%;height: 3.8rem;text-align: center; background:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCABjAk4DAREAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAUEAwf/xAAaEAEAAwEBAQAAAAAAAAAAAAAAExRhAVER/8QAGQEBAQEAAwAAAAAAAAAAAAAAAAMEAQcI/8QAFhEBAQEAAAAAAAAAAAAAAAAAABES/9oADAMBAAIRAxEAPwD3iTXeEeF4SaQhJpCEmkISaQhJpCEmkISaQhJpCEmkISaQhJpCEmkISaQhJpCEmkISaQhJpCEmkISaQhJpCEmkISaQhJpCEmkISaQhJpCEmkISaQhJpCEmkISaQhJpCEmkISaQhJpCEmkISaQhJpCEmkISaQhJpCEmkISaQhJpCEmkISaQhJpCEmkISaQhJpCEmkISaQhJpCEmkISaQhJpCEmkISaQhJpCEmkISaQhJpCEmkISaQhJpCEmkISaQhJpCEmkISaQhJpCEmkISaQjHMpFYTEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEITEIwTqxaE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CE5CJ1jVYvksaQyWNIZLGkMljSGSxpDJY0hksaQyWNIZLGkMljSGSxpDJY0hksaQyWNIZLGkMljSGSxpDJY0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') no-repeat;background-size: 100%; -webkit-box-sizing: border-box;box-sizing: border-box;}
+.mobile_return{position: absolute;top: 0.8rem;left: 1.2rem; width: 8.64%;height: 2rem;background: url('data:image/png;base64,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') no-repeat;background-size: 100% 100%;}
+.mobile_logo{display: inline-block; vertical-align: middle; width: 11.86%;height: 2rem;background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAAA3CAMAAABgpweWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACYVBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8AAACH0JX4AAAAyXRSTlMAAg8YHBsUCQc2ZpG0z+Tx+fz79evbxKeCWCsXZKvm3qYgQ6T+uGUSTcKYMSmxrjxzqh8BrLd0+HC8vyUOwM1X1LKShK2WXKJh/ciafGp3jSewEdBrW6j36a+d5WAZdji2lw0D9vpuiIse74/G5zTBJBMQeM6JMNnycdYijtH0MyqUkC19oD8K80ZoRLXjPqNeVZ6b1ZwjdZkENX8os7tM0qFAY8kyLMNFT+5ngMcWTmxUuVHFqYHsUu1i3VrL4owhvZVfLmmHWTodp3RrAAAAAWJLR0QAiAUdSAAAAAlwSFlzAAALEgAACxIB0t1+/AAAA5ZJREFUSMedl/lfDkEcx78qHUgn0iFHylOicqQockSe6qHkjqhckSSFEqFSFDqQQhIicqXc9zX/lZndfXZndudph88Ps9/vZ77zbneu5xWAI41ycnYZ7eoG/yd3jzFjx3mO9/L28fXznzBxUsDkwH8DBAWHTEEGhU4NniZKmD7DDzlQ2MzwCAHCLAsaUV6RUSaE2dHIXHPmjoSICRNA4JmJjXNEmDdfiIAWLETxi/iICE8xBEoI8kEocTEHsSRUEIGSIBm33kuNjGWiCJQCy6XnCj1ipTACrYJUOVjNItbwy9PWWtMzMjJt8+m3zIR1SrSeRmRxCdkbtDWclrNxk2LjidishFsoxlYOYdt23efm7pCnfSdAnr1ol9bLQcTuNs57fkwBQoWuACvUsj32vr1GxD7+Jtq/Hh3Aj8laof34GE96kcPzsOogbqK0ykOyXWxAHFYGlOQy40uO4KZ0HsDuTVqtTeo6qkcUlsprUYa8j2mE8gp0/IQSn6SqK7n7K1MurCJxicrYQlJnOZ5JVecR45QOUZ0vF0aSxENljCPpaTm20vVnOFNaoww6S5JylSFdDefk+DxdX4uN4zpGnTmDORve9QAXWESBG83IUhm1FKOBGZED4M8yyoBmNF60y0Ix2O0wCaCCZVxiGDopjCjGbAJIYMtiBRjNrBsHNta4zDCsAXadpBhX2CENcJU1WhiGdnxbKEYRO2QNRLBGK8Pgr20bOwQfAQtjtJszrulm6TrAdsaoNWfc0DHwTdTB7LKp6lVBspsqI4Wk0nnRfTxCqdjspA1y0TqPwk0NybpUxiWSupDolp7RjE23eMq4jY073filA/FhvKvdHz1eCO0lwT09IozcTdBIOb2kXprrjrr7QMm15wF5XDRsvG65n/oRqsAp2TIP+4CnRwYEqpJ7KjXnsTtAvxSlTDcinhgRyP62/Zrlot0xT8cMMIRn2RxEm9rdqno3lWtQUnX08/vuUkFHVGYy4umF9jde2r1XAAuYokOWkBkhSU2Irwr6RQcV8wR795upmPnaRNmMhPoCcYRNN+mvJdcCXeKIXsPKDRF7GPqEEaH1xuV/8xZ3wDtRxPsB4GhgI0KBQ4KIQSfg64N/4kcxhBUcqvTosAjh01UYSblDU8wIvrZ6MJHbvcSRCMOfv5gRJD1If8oHpH0NdxIiSKpM/TbIzk2BZ+t34X/JVC358exnZ5G1pb3mV8zvP0H8or/Ix1UjqNayNQAAAABJRU5ErkJggg==') no-repeat;background-size: 100% 100%;}
+.mobile_title{display: inline-block;vertical-align: middle;height: 100%; line-height: 3.8rem;color: #fff;font-size: 1.5rem;letter-spacing: 0.2rem;}
+.mobile_line{width: 96%;height: 1px; border-bottom: 0.15rem solid rgba(254,252,251,0.3);margin: 0 auto;}
+.mobile_box,.mobile_payBox{width: 93%;height: 15.85rem;padding-bottom: 2rem; margin-left: 3.5%;-webkit-box-sizing: border-box;box-sizing: border-box;overflow-y: auto;overflow-x: hidden;-webkit-overflow-scrolling: touch;overflow-scrolling: touch;}
+.mobile_btn{float: left;margin-left: 3.2%;width: 45.16%;height: 3rem; margin-top: 1.6rem;}
+.mobile_payBox{height: 20.85rem;}
+.mobile_payImg{content: url('data:image/png;base64,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');}
+
+
+
+/*支付渠道*/
+.mobile_close{position: absolute;top: 0.8rem;right: 1.6rem;width: 7.97%;height: 2.4rem;background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAABTElEQVRYR9WXMU4DQQxFnxsqrgINqTgG4gwcAFEgDhClCD25Q8QxKKk4ChWN0UgJmmx2h+/ZXTJsbfu/9diesdHIZ41w8APi7ufAM3ABrM3sdQ5Id78BHoAP4N7MPpNODrIBrjLxlZltp4Rx91vgMYv5bmZ3XZA34KwjPBlMD0SS+jKz6y5IStlTTwZGwwxAJKnlvgQOirXgUA2jxjzqGtVRqZ1IrN72jQQYAorGGJwj0UA5UI1vcaDVBKzxOeiaKVJcCyGBJCNFQLEpFbh815SEdgL5xNxrym0vg/ySmb6flSHkoxE7IjcLQVSBCJkJQ/xvkELR/t3RiBDhjgkdTRPtqwwrxWbUQIsIRGy7UO1femP+rsa33YdRzd9M8YRo7/G828BOv064ezML1guwyM676hYtDS115UxL+Bq4POkSrixMc9qEnopzgnwDYq0IMrmpjHEAAAAASUVORK5CYII=') no-repeat;background-size: 100% 100%;z-index: 100;}
+.mobile_iframe{ width: 100%;height: 90%;-webkit-height: calc(100% - 4rem);-webkit-height: calc(100% - 4rem);-webkit-height: calc(100% - 4rem);}
+.mobile_iframe iframe{width: 100%;height: 100%;}
+.mobile_pay_pop{width: 80%;height: 13rem;background-color:#ffffff;text-align: center;}
+.mobile_imgCenter{position: absolute;top: 50%;width: 100%;text-align: center;-webkit-transform:translateY(-50%);transform:translateY(-50%);}
+.mobile_imgCenter img{display: inline-block;vertical-align: middle; width: 16.875%;height: 4rem;margin-right: 1rem;}
+.mobile_imgCenter span{display: inline-block;vertical-align: middle;font-size: 1.3rem;font-weight: 600; color: #6b5e5e;}
+
+
+
+
+
+
+
+
+
+
+
+/*横屏显示*/
+@media screen and (min-aspect-ratio:13/8){
+  .mobile_box,.mobile_payBox{height: 9rem;}
+  .mobile_bind_box{margin-top: 2rem;max-height: 10rem;}
+  .mobile_top{height: 3.2rem;}
+  .mobile_return{top: 0.5rem;left: 3%;height: 1.8rem;}
+  .mobile_logo{height: 2rem;}
+  .mobile_title,.mobile_nav p,.mobile_bind_title{height: 2.8rem; line-height: 2.8rem;font-size: 1.3rem;}
+  .mobile_line,.mobile_nav{border-bottom: 0.1rem solid rgba(254,252,251,0.3);}
+  .mobile_btn{margin-left: 5%;width: 42.5%;height: 2.4rem; margin-top: 1.8rem;}
+  .mobile_nav{height: 2.8rem;}
+  .mobile_return2,.mobile_close{width: 6%;height: 1.8rem;top: 0.5rem;}
+  .mobile_bind_box{width: 70%;}
+  .mobile_bind_input{height: 2.6rem;margin-bottom: 1.2rem;}
+  .mobile_bind_input span{width: 24%;height: 2.6rem;line-height: 2.6rem;font-size: 1rem;}
+  .mobile_bind_input input{width: 60%;height: 2.6rem;line-height: 2.6rem;}
+  .mobile_bind_btn{width: 13%;height: 1.6rem;margin-top: 0.5rem;font-size: 0.6rem;-webkit-border-radius: 0.5rem;border-radius: 0.5rem;}
+  .mobile_bind_account,.mobile_bind_change{margin-top: 0.5rem;height: 2.2rem;line-height: 2.2rem;font-size: 0.9rem;}
+  .mobile_bind_pop p{font-size: 0.9rem;line-height: 1.2rem;height: 4.6rem;}
+  .mobile_iframe{height: 90%; -webkit-height: calc(100% - 2.8rem);-moz-height: calc(100% - 2.8rem);height: calc(100% - 2.8rem);}
+  .mobile_pay_pop{width: 60%;height: 6rem;}
+  .mobile_imgCenter img{width: 11%;height: 2.2rem;margin-right: 0.6rem;}
+  .mobile_imgCenter span{font-size: 1.1rem;}
+  /*20210929新增/修改*/
+  .mobile_pop,.mobile_bind_pop{width: 70%; height: 22rem;}
+  .mobile_payBtn{width: 80%;margin: 0 auto;}
+  .mobile_payBtn span{line-height: 3;}
+
+}
+</style>
+  <script>function modalPostMessage(value){
+    window.parent.postMessage('{"pay":"'+value+'"}', "*"); //*允许跨域
+}
+
+function expandPaymentMethods(){
+    var payMethodsDiv = document.getElementById('payMethodsDiv')
+    payMethodsDiv.classList.remove("on");
+    var divMore =  document.getElementById('divMore')
+    var _parent = divMore.parentNode;
+    if(_parent){
+        _parent.removeChild(divMore);
+    }
+}
+
+//增加监听
+window.addEventListener("message",function(obj){
+    console.log(obj);
+    if(obj.data){
+        try{
+            // console.log("receive msg:"+JSON.stringify(obj.data));
+            var paywaysArray = obj.data.payways;
+            //商品信息
+            loadProductInfo(obj.data.appName,obj.data.productInfo)
+
+            if(paywaysArray && paywaysArray.length > 0 && paywaysArray[0]['id']){
+                var payMethodsDiv = this.document.getElementById('payMethodsDiv');
+                if(payMethodsDiv){
+                    //带商品信息的支付页面处理方式
+                    loadPayMenthods(paywaysArray)
+                }else{
+                    //原支付方法页面处理方式
+                    var payModalBoxContent = loadPayWays(paywaysArray);
+                    var payModalBox = this.document.getElementById('pay_modal_box');
+                    if(payModalBox){
+                        payModalBox.appendChild(payModalBoxContent);
+                    }
+                }
+            }
+                        
+            //是合法消息就国际化，避免列表为空时没有国际化
+            if(paywaysArray){
+                translate(obj.data.i18n);
+            }
+            
+        }catch(error){
+            console.warn('Got unknown message, drop it.' + error);
+        }
+    }
+});
+
+/**
+ * 对自定义国际化标签的文本进行国际化，国际化标签形式:{{wingi18n:amdi18n.key}},key是具体的键值。
+ * @param {包含i18n标签的源文本} srcString 
+ * @param {国际化对象} langArray 
+ */
+function doTranslate(srcString, langArray){
+    var regExpKey = /{{wingi18n:amdi18n\..*?}}/ig;//定义正则表达式，将获取html中所有i18n key
+    var i18nKeyArray = srcString.match(regExpKey);
+    for(var index = 0; index < i18nKeyArray.length; index++){
+        i18nKeyArray[index] = i18nKeyArray[index].replace('{{wingi18n:amdi18n.','');
+        i18nKeyArray[index] = i18nKeyArray[index].replace('}}','');
+    }
+
+    var regExpTag = /{{wingi18n:amdi18n\..*?}}/ig;//定义正则表达式，将获取html中所有i18n标签并替换
+    var i18nTagArray = srcString.match(regExpTag);
+    
+    //循环源文本所有的国际化标签并替换成对应的国际化文字
+    for (var index = 0; index < i18nTagArray.length; index++) {
+        srcString = srcString.replace(i18nTagArray[index], langArray[i18nKeyArray[index]]);
+    }
+    return srcString;
+};
+
+//获取当前文档中class为i18n的标签，替换里面的文字
+function translate(langArray){
+    var i18nItems = document.getElementsByClassName('i18n');
+    for(var i=0; i<i18nItems.length; i++){
+        i18nItems[i].innerText = doTranslate(i18nItems[i].innerText, langArray);
+        if(i18nItems[i].className.indexOf('mobile_')==-1){
+            i18nItems[i].style.display = "block";
+        }
+        // console.log("i18nItems[i].className::"+i18nItems[i].className)
+    }
+};
+
+/**
+ * 图片加载失败时的处理：直接显示名称
+ * @param {平台名称} platformName 
+ */
+function imgLoadErrorEvent(platformName) {
+    var img = document.getElementById("img_"+platformName);
+    if(img.parentNode){
+        img.parentNode.setAttribute("class","item nopic");
+    }
+    if(img){
+        img.outerHTML = platformName;
+    }
+    console.log("succ");
+}
+
+/**
+     * 渲染支付列表
+     * 使用flexbox布局渲染，类似如下形式
+     * <div class="flexbox">
+     *       <div class="column">
+     *           <span class="item"></span>
+     *           <span class="item"></span>
+     *       </div>
+     *       <div class="column">
+     *           <span class="item"></span>
+     *           <span class="item">偶数行，不足则补空行</span>
+     *       </div>
+     *  </div>
+     */
+    function loadPayWays(data){
+        //判断支付方式是否为空
+        if(!data || data.length == 0){
+            return;
+        }
+
+        var payWayDiv = document.createElement('div');
+        var flexBox = null;
+        var item = null;
+        for(var k=0; k<data.length; k++){
+            //奇数项增加父类div
+            if((k+1)%2 !== 0){
+                flexBox = document.createElement('div');
+                flexBox.className = 'column';
+
+                payWayDiv.appendChild(flexBox);
+            }
+            // item = '<span href="javascript:void(0)" class="item" id="'+k+'"><img id="img_'+k+'"  src="'+data[k]+'" alt="'+k+'" onclick="modalPostMessage(\''+k+'\')"></span>';
+            //动态创建支付item
+            var platformName = data[k]['name'];
+            item = document.createElement('span');
+            item.className = "item";
+            item.id = platformName;
+            item.setAttribute("onclick", "modalPostMessage('"+platformName+"')");
+
+            //动态创建img
+            var img = document.createElement('img');
+            var imgUrl = data[k]['logoUrl'];
+            img.id = "img_" + platformName;
+            img.src = imgUrl? imgUrl: "";
+            img.alt = platformName;
+            img.setAttribute("onerror", "imgLoadErrorEvent('"+platformName+"')");
+
+            item.appendChild(img);
+            flexBox.appendChild(item);
+        }
+
+        //不足偶数行创建一个空span补足偶数行，否则最后一行layout会有点问题
+        if(data.length % 2 !== 0){
+            item = document.createElement('span');
+            item.className = "dump_item";
+            flexBox.appendChild(item);
+        }
+
+        return payWayDiv;
+    }
+
+    function loadProductInfo(appName,productInfo){
+        if(!productInfo){
+            return
+        }
+
+        var spGameName = document.getElementById('spGameName')
+        if(spGameName) spGameName.textContent = appName
+        
+        var spName = document.getElementById('spProductName')
+        if(spName) spName.textContent = productInfo.productName
+        
+        var spPrice = document.getElementById('spProductPrice')
+        if(spPrice) spPrice.textContent = getCurrencySymbol(productInfo.productCurrencyCode) + productInfo.productAmount
+
+    }
+
+    function loadPayMenthods(data) {
+        // console.log("loadPayMenthods::"+JSON.stringify(data))
+        //判断支付方式是否为空
+        if(!data || data.length == 0){
+            return;
+        }
+        
+        var payMethodsBox = document.getElementById('payMethodsDiv');
+
+        var itemContainer = null;
+        var itemSpan = null;
+        var itemImg = null;
+        var itemText = null;
+        for(var k=0; k<data.length; k++){
+            var platformName = data[k]['name'];
+
+            if(k==0){
+                //第一位 Confirm and Pay
+                itemText = 'Confirm and Pay'
+            } else {
+                //其他位 Pay with Xxx
+                itemText = 'Pay with '+ getPaymentMethodName(platformName)
+            }
+            
+            //按钮容器
+            itemContainer = document.createElement('div');
+            itemContainer.className = 'mobile_payBtn'
+            payMethodsBox.appendChild(itemContainer)
+
+            //按钮图片
+            itemImg = document.createElement('img')
+            itemImg.className = 'mobile_payImg'
+            itemImg.alt = itemText
+            itemContainer.appendChild(itemImg)
+
+            //按钮文案
+            itemSpan = document.createElement('span')
+            itemSpan.setAttribute("onclick", "modalPostMessage('"+platformName+"')");
+            itemSpan.textContent = itemText
+            itemContainer.appendChild(itemSpan)
+
+        }
+
+        if(data.length>3){
+            //超出3个，显示更多按钮
+            var divMore =  document.getElementById('divMore')
+            divMore.style.display = ''
+        }else{
+            //小于等于3个，直接展开
+            expandPaymentMethods()
+        }
+
+    }
+
+    var currencySymbolMap = {
+        'AED': 'د.إ',
+        'AFN': '؋',
+        'ALL': 'L',
+        'AMD': '֏',
+        'ANG': 'ƒ',
+        'AOA': 'Kz',
+        'ARS': '$',
+        'AUD': '$',
+        'AWG': 'ƒ',
+        'AZN': '₼',
+        'BAM': 'KM',
+        'BBD': '$',
+        'BDT': '৳',
+        'BGN': 'лв',
+        'BHD': '.د.ب',
+        'BIF': 'FBu',
+        'BMD': '$',
+        'BND': '$',
+        'BOB': '$b',
+        'BRL': 'R$',
+        'BSD': '$',
+        'BTC': '฿',
+        'BTN': 'Nu.',
+        'BWP': 'P',
+        'BYR': 'Br',
+        'BYN': 'Br',
+        'BZD': 'BZ$',
+        'CAD': '$',
+        'CDF': 'FC',
+        'CHF': 'CHF',
+        'CLP': '$',
+        'CNY': '¥',
+        'COP': '$',
+        'CRC': '₡',
+        'CUC': '$',
+        'CUP': '₱',
+        'CVE': '$',
+        'CZK': 'Kč',
+        'DJF': 'Fdj',
+        'DKK': 'kr',
+        'DOP': 'RD$',
+        'DZD': 'دج',
+        'EEK': 'kr',
+        'EGP': '£',
+        'ERN': 'Nfk',
+        'ETB': 'Br',
+        'ETH': 'Ξ',
+        'EUR': '€',
+        'FJD': '$',
+        'FKP': '£',
+        'GBP': '£',
+        'GEL': '₾',
+        'GGP': '£',
+        'GHC': '₵',
+        'GHS': 'GH₵',
+        'GIP': '£',
+        'GMD': 'D',
+        'GNF': 'FG',
+        'GTQ': 'Q',
+        'GYD': '$',
+        'HKD': '$',
+        'HNL': 'L',
+        'HRK': 'kn',
+        'HTG': 'G',
+        'HUF': 'Ft',
+        'IDR': 'Rp',
+        'ILS': '₪',
+        'IMP': '£',
+        'INR': '₹',
+        'IQD': 'ع.د',
+        'IRR': '﷼',
+        'ISK': 'kr',
+        'JEP': '£',
+        'JMD': 'J$',
+        'JOD': 'JD',
+        'JPY': '¥',
+        'KES': 'KSh',
+        'KGS': 'лв',
+        'KHR': '៛',
+        'KMF': 'CF',
+        'KPW': '₩',
+        'KRW': '₩',
+        'KWD': 'KD',
+        'KYD': '$',
+        'KZT': 'лв',
+        'LAK': '₭',
+        'LBP': '£',
+        'LKR': '₨',
+        'LRD': '$',
+        'LSL': 'M',
+        'LTC': 'Ł',
+        'LTL': 'Lt',
+        'LVL': 'Ls',
+        'LYD': 'LD',
+        'MAD': 'MAD',
+        'MDL': 'lei',
+        'MGA': 'Ar',
+        'MKD': 'ден',
+        'MMK': 'K',
+        'MNT': '₮',
+        'MOP': 'MOP$',
+        'MRO': 'UM',
+        'MRU': 'UM',
+        'MUR': '₨',
+        'MVR': 'Rf',
+        'MWK': 'MK',
+        'MXN': '$',
+        'MYR': 'RM',
+        'MZN': 'MT',
+        'NAD': '$',
+        'NGN': '₦',
+        'NIO': 'C$',
+        'NOK': 'kr',
+        'NPR': '₨',
+        'NZD': '$',
+        'OMR': '﷼',
+        'PAB': 'B/.',
+        'PEN': 'S/.',
+        'PGK': 'K',
+        'PHP': '₱',
+        'PKR': '₨',
+        'PLN': 'zł',
+        'PYG': 'Gs',
+        'QAR': '﷼',
+        'RMB': '￥',
+        'RON': 'lei',
+        'RSD': 'Дин.',
+        'RUB': '₽',
+        'RWF': 'R₣',
+        'SAR': '﷼',
+        'SBD': '$',
+        'SCR': '₨',
+        'SDG': 'ج.س.',
+        'SEK': 'kr',
+        'SGD': '$',
+        'SHP': '£',
+        'SLL': 'Le',
+        'SOS': 'S',
+        'SRD': '$',
+        'SSP': '£',
+        'STD': 'Db',
+        'STN': 'Db',
+        'SVC': '$',
+        'SYP': '£',
+        'SZL': 'E',
+        'THB': '฿',
+        'TJS': 'SM',
+        'TMT': 'T',
+        'TND': 'د.ت',
+        'TOP': 'T$',
+        'TRL': '₤',
+        'TRY': '₺',
+        'TTD': 'TT$',
+        'TVD': '$',
+        'TWD': 'NT$',
+        'TZS': 'TSh',
+        'UAH': '₴',
+        'UGX': 'USh',
+        'USD': '$',
+        'UYU': '$U',
+        'UZS': 'лв',
+        'VEF': 'Bs',
+        'VND': '₫',
+        'VUV': 'VT',
+        'WST': 'WS$',
+        'XAF': 'FCFA',
+        'XBT': 'Ƀ',
+        'XCD': '$',
+        'XOF': 'CFA',
+        'XPF': '₣',
+        'YER': '﷼',
+        'ZAR': 'R',
+        'ZWD': 'Z$'
+    }
+
+    // 获取货币符号
+    function getCurrencySymbol(currencyCode){
+        if (typeof currencyCode !== 'string') return ''
+        var code = currencyCode.toUpperCase()
+        if (!currencySymbolMap.hasOwnProperty(code)) return ''
+        var sy = currencySymbolMap[code]
+        // console.log('currencyCode:'+currencyCode+",Symbol："+sy)
+        return sy
+    }
+
+    var paymentMethodsMap = {
+        "APPLE":"Apple",
+        "BOACOMPRA":"BoaCompra",
+        "FACEBOOK":"Facebook",
+        "GOOGLE":"Google",
+        "HUAWEI_HMS":"Huawei",
+        "KONGREGATE":"Kongregate",
+        "LATAMGATEWAY_PICPAY":"LatamGateway_Picpay",
+        "LATAMGATEWAY_PIX":"LatamGateway_Pix",
+        "MIRACLEGAMES":"MiracleGames",
+        "MOL":"Mol",
+        "PAYMENTWALL":"Paymentwall",
+        "PAYPAL":"PayPal",
+        "R2GAMES":"R2Games",
+        "WA_SANDBOX":"Wa_Sandbox",
+        "XSOLLA":"Xsolla",
+    }
+
+    /**
+     * 获取支付名称
+     * @param {支付方式} payMethod 
+     * @returns 
+     */
+    function getPaymentMethodName(payMethod){
+        if (typeof payMethod !== 'string') return payMethod
+        var method = payMethod.toUpperCase()
+        if (!paymentMethodsMap.hasOwnProperty(method)) return payMethod
+        var name = paymentMethodsMap[method]
+        // console.log('payMethod:'+payMethod+",name："+name)
+        return name
+    }
+
+    </script>
+  <script type="text/javascript">
+    //字体大小
+    // JavaScript Document
+    ////////////////////
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function () {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = 10 * (clientWidth / 320) + 'px';
+            };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+        recalc();
+    })(document, window);
+    ////////////////////
+
+
+    //在ios10前我们能通过设置meta来禁止用户缩放页面：
+    // ios10中禁止Safari浏览器用户缩放页面
+    // 解决方法：监听事件来阻止,
+    // 测试过，感觉没那么容易触发缩放，但还是有可能触发的，总体来说不太完善
+    window.onload=function () {
+        document.addEventListener('touchstart',function (event) {
+            if(event.touches.length>1){
+                event.preventDefault();
+            }
+        });
+        var lastTouchEnd=0;
+        document.addEventListener('touchend',function (event) {
+            var now=(new Date()).getTime();
+            if(now-lastTouchEnd<=300){
+                event.preventDefault();
+            }
+            lastTouchEnd=now;
+        },false);
+
+
+
+    //    账号绑定
+        var $ = function(selector){
+            return document.querySelector(selector);
+        };
+    };
+  </script>
+</head>
+<body>
+
+
+<div class="mobile_mask"></div>
+<div class="mobile_payPop mobile_pop">
+  
+  <div class="mobile_top">
+    <button type="button" class="mobile_return" onclick="modalPostMessage('')"></button>
+    <span class="mobile_logo"></span>
+    <span class="mobile_title i18n">{{wingi18n:amdi18n.recharge_title}}</span>
+  </div>
+
+  
+  
+  <div class="mobile_goodsInfo">
+    <div class="mobile_ i18n">{{wingi18n:amdi18n.item_detail}}</div>
+    <div class="mobile_goodsBox">
+      <div class="mobile_goodsName"><div class="mobile_ i18n" style="display:inline">{{wingi18n:amdi18n.game_name}}：</div><span id="spGameName"></span></div>
+      <div class="mobile_goodsName"><div class="mobile_ i18n" style="display:inline">{{wingi18n:amdi18n.item_name}}：</div><span id="spProductName"></span></div>
+      <div class="mobile_goodsName"><div class="mobile_ i18n" style="display:inline">{{wingi18n:amdi18n.item_price}}：</div><span id="spProductPrice" class="mobile_goodsPrice"></span></div>
+    </div>
+  </div>
+  <div class="mobile_payMethods">
+    <div class="mobile_ i18n">{{wingi18n:amdi18n.payment_method}}</div>
+    <div class="mobile_payMethodsBox on" id="payMethodsDiv"></div>
+    <div class="mobile_goodsMore" style="display:none" onclick="expandPaymentMethods('')" id="divMore"><div class="mobile_ i18n" style="display:inline">{{wingi18n:amdi18n.expand_more}}</div><span></span></div>
+  </div>
+
+  <div class="mobile_goodsTips">
+    <span class="mobile_ i18n">{{wingi18n:amdi18n.tips}}:</span><br>
+    <div class="mobile_ i18n">{{wingi18n:amdi18n.recharge_help_tips}}</div>
+  </div>
+</div>
+</body>
+</html>
+

@@ -14,7 +14,24 @@ $(function(){
         sdkType: 'html5',
         // platform: 'html5',
         debug: true,
-        logSize: 10
+        logSize: 10,
+        success:function(result){
+            console.log("我初始化成功过了=================")
+
+            wingplus.user.login({
+                platform: 'GUEST',
+                success: function(result){
+                    console.log("登录成功",result);
+                },
+                fail: function(result){
+                    console.log("登录失败",result);
+                },
+                cancel: function(result){
+                    console.log("登录取消",result);
+                }
+            });
+            
+        }
     });
 
  
