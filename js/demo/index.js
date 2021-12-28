@@ -152,3 +152,12 @@ function logout(){
     showResult('登出', '登出成功');
 }
 /*****************************************logout end*****************************************/
+
+
+/*****************************************showCollect begin*****************************************/
+function showCollect(){
+    console.log("showCollectGuide");
+    wingplus.user.showCollectGuide();
+    // showResult('登出', '登出成功');
+}
+/*****************************************showCollect end*****************************************/

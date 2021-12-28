@@ -849,7 +849,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
                         appId            : __webpack_require__(0).context.initInfo.fbAppId,
                         autoLogAppEvents : false,
                         xfbml            : true,
-                        version          : 'v6.0'
+                        version          : 'v2.11'
                     });
                 }
                 FB.getLoginStatus(function (response) {
@@ -1878,7 +1878,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
             appId:fbAppId,
             cookie: true,
             xfbml:true,
-            version:'v3.2'
+            version:'v2.11'
         });
     })
 }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),

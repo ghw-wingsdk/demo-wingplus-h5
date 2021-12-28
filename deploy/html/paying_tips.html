@@ -126,6 +126,70 @@ body{width: 100%;font-size: 1rem;font-family: "Arial";color: #ffffff;}
   .mobile_payBtn span{line-height: 3;}
 
 }
+
+
+/*20211209增加*/
+.mobile_payPop2{display: flex;flex-direction: column;height: 73%;background-color: #ffffff; border-radius: 1rem;}
+.mobile_goodsInfo2,.mobile_payMethodsBox2{width: 93%;color: #999999;font-size: 0.8rem;padding: 1.5% 3.5%;line-height: 2;position: relative;}
+.mobile_goodsBox2{ min-height: 3rem;padding: 0.5rem 1rem;}
+.mobile_goodsName2{font-size: 0.9rem;line-height: 1.6; text-align: center;}
+.mobile_goodsName2 span{color: #4c4c4c;}
+.mobile_goodsName2 .mobile_goodsPrice2{color: #fd9611; font-size: 2.5rem; font-weight: 900;}
+.mobile_payMethods2{height:100%;font-size: 0.8rem;color: #999;line-height: 2;text-indent: 3.5%;position: relative;overflow-y:scroll;display: grid;place-content: center}
+.mobile_payBtn2,.mobile_payCompleteBtn2{ width: 100%; text-align: center;}
+.mobile_payBtn2 img{width: 80%;height: auto}
+.mobile_payBtn2 span,.mobile_payCompleteBtn2 span{ width: 100%;display: inline-block;overflow:hidden;line-height:normal;color: #000000;font-size: 0.7rem;}
+.mobile_goodsTips2{width: 90%;color: #4c4c4c;line-height: 1.5;font-size: 0.7rem;margin: 3% auto;}
+.mobile_goodsTips2 span{color: #999;}
+.mobile_payline2{ width: 90%; height: 1px; background-color: #dbdbdb; position: absolute; left: 5%; bottom: 0;}
+.mobile_payline3{ width: 90%; height: 1px; background-color: #dbdbdb; position: absolute; left: 5%;}
+.mobile_grid{
+  display: grid;
+  grid-template-columns: repeat(3, 30%);
+  grid-auto-rows: 8rem;
+  /*height: 100%;*/
+  /*place-content: center;*/
+  /*place-items: end center;*/
+  overflow-y: scroll;
+  grid-column-gap: 1.6%;
+  grid-row-gap: 1rem;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.mobile_payBtn_grid{
+  display: grid;
+  grid-template-rows: 60% 20%;
+  grid-auto-columns: 100%;
+  justify-content: center;
+  place-items: center center;
+  height: 100%;
+  line-height: 0;
+}
+.item{
+  width: 100%;
+  height: 8.15vw;
+  margin-right: 1vw;
+  margin-left: 1vw;
+  color: white;
+  font-size: 4vw;
+  border: 1px solid rgba(238,238,238,1);
+}
+.nopic{
+  background-color: #337ab7;
+  padding-top: 0.5vw;
+  height: 14.4vw;
+  text-align: center;
+  line-height: 14.4vw;
+}
+.item img{
+  width:100%;
+  height: auto;
+  height: -webkit-fill-available;
+}
+.item:hover{
+  box-shadow:0px 4px 9px 1px rgba(153,153,153,0.5);
+  border-radius:2px;
+}
 </style>
   <script type="text/javascript">
     //关闭方法
