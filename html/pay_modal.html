@@ -351,15 +351,35 @@ function loadProductInfo(appName, productInfo) {
         return
     }
 
-    var spGameName = document.getElementById('spGameName')
+    let spGameName = document.getElementById('spGameName')
     if (spGameName) spGameName.textContent = appName
 
-    var spName = document.getElementById('spProductName')
+    let spName = document.getElementById('spProductName')
     if (spName) spName.textContent = productInfo.productName
 
-    var spPrice = document.getElementById('spProductPrice')
-    if (spPrice) spPrice.textContent = getCurrencySymbol(productInfo.productCurrencyCode) + productInfo.productAmount
+    let currencyCode = getCurrencySymbol(productInfo.productCurrencyCode)
+    let productDiscount = productInfo.productDiscount //商品折扣
+    let elePriceDel = document.getElementById('spProductPriceDel')
+    let elePriceOff = document.getElementById('spProductOff')
+    let elePrice = document.getElementById('spProductPrice')
+    let elePriceWrapperOff = document.getElementById('priceOffWrapper')
+    let elePriceWrapper = document.getElementById('priceWrapper')
 
+    if (!productDiscount||productDiscount===100){
+        //无折扣
+        if (elePrice) elePrice.textContent = currencyCode + productInfo.productAmount
+        //隐藏折扣元素
+        if (elePriceDel) elePriceDel.style.display =  "none"
+        if (elePriceWrapperOff) elePriceWrapperOff.style.display = "none"
+        //增加底部边距
+        if (elePriceWrapper) elePriceWrapper.style.marginBottom = '1rem';
+    }else {
+        //有折扣
+        let cutOff = 100 - productDiscount//减免率
+        if (elePriceDel) elePriceDel.textContent = currencyCode + productInfo.productAmount //原价
+        if (elePrice) elePrice.textContent = currencyCode + productInfo.productDiscountAmount //现价，打折后的价格
+        if (elePriceOff) elePriceOff.innerHTML = '' + cutOff +'<div class="mobile_discountTextPercent">%</div>'
+    }
 }
 
 function loadPayMenthods(data) {
@@ -464,6 +484,7 @@ function loadPayMethodsV2(data) {
 
         //平台图片
         let imgContainer = document.createElement('div');
+        imgContainer.className = 'mobile_payBtn_imgContainer'
         itemImg = document.createElement('img')
         // itemImg.id = "img_" + platformName;
         itemImg.src = itemImgSrc ? itemImgSrc : "";

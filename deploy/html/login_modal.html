@@ -32,8 +32,8 @@ body {
 .box .column{
     display: flex;
     flex-direction: row;
-    margin-top: 3vw;
-    min-height: 5vw;
+	margin-top: 20px;
+	min-height: 0;
   }
 
 .hidden{
@@ -41,30 +41,30 @@ body {
 }
 
 .item{
-    width: 30vw;
-    height: 6.5vw;
-    margin-right: 1vw;
-    margin-left: 1vw;
+	width: 184px;
+	height: 40px;
+	margin-right: 10px;
+	margin-left: 10px;
     color: white;
-	font-size: 4vw;
+	font-size: 20px;
     border: 1px solid rgba(238,238,238,1);
 }
 
 .dump_item{
-    width: 30vw;
-    height: 8.15vw;
+	width: 184px;
+	height: 40px;
     margin-right: 1vw;
     margin-left: 1vw;
     color: white;
-	font-size: 4vw;
+	font-size: 14px;
 }
 
 .nopic{
     background-color: #337ab7;
-    padding-top: 0.5vw;
-	height: 6vw;
+    padding-top: 0;
+	height: 40px;
 	text-align: center;
-	line-height: 6vw;
+	line-height: 40px;
 }
 
 .item img{
@@ -90,13 +90,13 @@ body {
 }
 .modal_pop {
 	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	width: 72vw;
-	height: 50vw;
-	margin: auto;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%) scale(0.3);
+	margin: 0;
+
+	width: 455px;
+	height: 350px;
     background-color: rgba(255, 255, 255, 1);
 	z-index: 99;
 	overflow: hidden;
@@ -106,7 +106,7 @@ body {
     justify-content: center;
     align-items: center;
 	width: 100%;
-	height: 7vw;
+	height: 45px;
 	/* background:url('data:image/png;base64,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') no-repeat; */
 	background:linear-gradient(0deg,rgba(23,135,221,1) 0%,rgba(48,213,245,1) 100%);
 	background-size: 100%;
@@ -122,8 +122,8 @@ body {
 	background-size: contain;
 }
 .modal_logo {
-	width: 5vw;
-	height: 4vw;
+	width: 33px;
+	height: 26px;
 	background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAAA3CAMAAABgpweWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACYVBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8AAACH0JX4AAAAyXRSTlMAAg8YHBsUCQc2ZpG0z+Tx+fz79evbxKeCWCsXZKvm3qYgQ6T+uGUSTcKYMSmxrjxzqh8BrLd0+HC8vyUOwM1X1LKShK2WXKJh/ciafGp3jSewEdBrW6j36a+d5WAZdji2lw0D9vpuiIse74/G5zTBJBMQeM6JMNnycdYijtH0MyqUkC19oD8K80ZoRLXjPqNeVZ6b1ZwjdZkENX8os7tM0qFAY8kyLMNFT+5ngMcWTmxUuVHFqYHsUu1i3VrL4owhvZVfLmmHWTodp3RrAAAAAWJLR0QAiAUdSAAAAAlwSFlzAAALEgAACxIB0t1+/AAAA5ZJREFUSMedl/lfDkEcx78qHUgn0iFHylOicqQockSe6qHkjqhckSSFEqFSFDqQQhIicqXc9zX/lZndfXZndudph88Ps9/vZ77zbneu5xWAI41ycnYZ7eoG/yd3jzFjx3mO9/L28fXznzBxUsDkwH8DBAWHTEEGhU4NniZKmD7DDzlQ2MzwCAHCLAsaUV6RUSaE2dHIXHPmjoSICRNA4JmJjXNEmDdfiIAWLETxi/iICE8xBEoI8kEocTEHsSRUEIGSIBm33kuNjGWiCJQCy6XnCj1ipTACrYJUOVjNItbwy9PWWtMzMjJt8+m3zIR1SrSeRmRxCdkbtDWclrNxk2LjidishFsoxlYOYdt23efm7pCnfSdAnr1ol9bLQcTuNs57fkwBQoWuACvUsj32vr1GxD7+Jtq/Hh3Aj8laof34GE96kcPzsOogbqK0ykOyXWxAHFYGlOQy40uO4KZ0HsDuTVqtTeo6qkcUlsprUYa8j2mE8gp0/IQSn6SqK7n7K1MurCJxicrYQlJnOZ5JVecR45QOUZ0vF0aSxENljCPpaTm20vVnOFNaoww6S5JylSFdDefk+DxdX4uN4zpGnTmDORve9QAXWESBG83IUhm1FKOBGZED4M8yyoBmNF60y0Ix2O0wCaCCZVxiGDopjCjGbAJIYMtiBRjNrBsHNta4zDCsAXadpBhX2CENcJU1WhiGdnxbKEYRO2QNRLBGK8Pgr20bOwQfAQtjtJszrulm6TrAdsaoNWfc0DHwTdTB7LKp6lVBspsqI4Wk0nnRfTxCqdjspA1y0TqPwk0NybpUxiWSupDolp7RjE23eMq4jY073filA/FhvKvdHz1eCO0lwT09IozcTdBIOb2kXprrjrr7QMm15wF5XDRsvG65n/oRqsAp2TIP+4CnRwYEqpJ7KjXnsTtAvxSlTDcinhgRyP62/Zrlot0xT8cMMIRn2RxEm9rdqno3lWtQUnX08/vuUkFHVGYy4umF9jde2r1XAAuYokOWkBkhSU2Irwr6RQcV8wR795upmPnaRNmMhPoCcYRNN+mvJdcCXeKIXsPKDRF7GPqEEaH1xuV/8xZ3wDtRxPsB4GhgI0KBQ4KIQSfg64N/4kcxhBUcqvTosAjh01UYSblDU8wIvrZ6MJHbvcSRCMOfv5gRJD1If8oHpH0NdxIiSKpM/TbIzk2BZ+t34X/JVC358exnZ5G1pb3mV8zvP0H8or/Ix1UjqNayNQAAAABJRU5ErkJggg==') no-repeat;
     background-size: contain;
     display: flex;
@@ -133,24 +133,24 @@ body {
 .modal_title {
     /* color: #fff; */
     color: rgba(255, 255, 255, 1);
-	font-size: 4vw;
-    letter-spacing: 0.2vw;
-	margin-left: 0.4vw;
+	font-size: 24px;
+	letter-spacing: 2px;
+	margin-left: 5px;
 	font-family:MicrosoftYaHei-Bold;
 	font-weight:bold;
 }
 .modal_close {
     position: absolute;
-    right: 2vw;
-    width: 3.5vw;
-    height: 3.5vw;
+	right: 14px;
+	width: 22px;
+	height: 22px;
     background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAABTElEQVRYR9WXMU4DQQxFnxsqrgINqTgG4gwcAFEgDhClCD25Q8QxKKk4ChWN0UgJmmx2h+/ZXTJsbfu/9diesdHIZ41w8APi7ufAM3ABrM3sdQ5Id78BHoAP4N7MPpNODrIBrjLxlZltp4Rx91vgMYv5bmZ3XZA34KwjPBlMD0SS+jKz6y5IStlTTwZGwwxAJKnlvgQOirXgUA2jxjzqGtVRqZ1IrN72jQQYAorGGJwj0UA5UI1vcaDVBKzxOeiaKVJcCyGBJCNFQLEpFbh815SEdgL5xNxrym0vg/ySmb6flSHkoxE7IjcLQVSBCJkJQ/xvkELR/t3RiBDhjgkdTRPtqwwrxWbUQIsIRGy7UO1femP+rsa33YdRzd9M8YRo7/G828BOv064ezML1guwyM676hYtDS115UxL+Bq4POkSrixMc9qEnopzgnwDYq0IMrmpjHEAAAAASUVORK5CYII=') no-repeat;
     background-size: contain;
 }
 .modal_box {
     display: flex;
     justify-content: center;
-	height: 38vw;
+	height: 305px;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	overflow-y: auto;
@@ -158,29 +158,59 @@ body {
 	-webkit-overflow-scrolling: touch;
 }
 
-@media screen and (min-width: 720px) {
-    .modal_pop {
-        transform: scale(0.8, 0.8);
-    }
+@media screen and (min-width: 190px) {
+	.modal_pop {
+		transform: translate(-50%,-50%) scale(0.4);
+	}
 }
 
-@media screen and (orientation:landscape) and (min-width: 1024px) {
-    .modal_pop {
-        transform: scale(0.6, 0.6);
-    }
+@media screen and (min-width: 210px) {
+	.modal_pop {
+		transform: translate(-50%,-50%) scale(0.45);
+	}
 }
 
-@media screen and (min-width: 1440px) {
-    .modal_pop {
-        transform: scale(0.4, 0.4);
-    }
+@media screen and (min-width: 240px) {
+	.modal_pop {
+		transform: translate(-50%,-50%) scale(0.5);
+	}
 }
 
-@media screen and (orientation:portrait) and (max-width: 720px) {
-    .modal_pop {
-        transform: scale(1.2, 1.2);
-    }
-}</style>
+@media screen and (min-width: 280px) {
+	.modal_pop {
+		transform: translate(-50%,-50%) scale(0.6);
+	}
+}
+
+@media screen and (min-width: 340px) {
+	.modal_pop {
+		transform: translate(-50%,-50%) scale(0.7);
+	}
+}
+
+@media screen and (min-width: 400px) {
+	.modal_pop {
+		transform: translate(-50%,-50%) scale(0.8);
+	}
+}
+
+@media screen and (min-width: 450px) {
+	.modal_pop {
+		transform: translate(-50%,-50%) scale(0.9);
+	}
+}
+
+@media screen and (min-width: 500px) {
+	.modal_pop {
+		transform: translate(-50%,-50%) scale(1);
+	}
+}
+/*横屏显示*/
+@media screen and (max-width: 1024px) and (min-aspect-ratio:13/8){
+	.modal_pop {height: 250px}
+	.modal_box {height: 205px}
+}
+</style>
     <script>function modalPostMessage(value){
     window.parent.postMessage('{"user":"'+value+'"}', "*"); //*允许跨域
 }
@@ -202,6 +232,11 @@ window.addEventListener("message",function(obj){
                 if(loginModalBox){
                     loginModalBox.appendChild(loginModalBoxContent);
                 }
+                let eleBtnGoogle = this.document.getElementById('googleBtnId');
+                if (eleBtnGoogle){
+                    console.log('存在Google 按钮，post  initGoogle 消息...')
+                    modalPostMessage('initGoogle')
+                }
             }
 
             // this.console.log("translateDom:" + translateDom);
@@ -213,8 +248,8 @@ window.addEventListener("message",function(obj){
 
 /**
  * 对自定义国际化标签的文本进行国际化，国际化标签形式:{{wingi18n:amdi18n.key}},key是具体的键值。
- * @param {包含i18n标签的源文本} srcString 
- * @param {国际化对象} langArray 
+ * @param {包含i18n标签的源文本} srcString
+ * @param {国际化对象} langArray
  */
 function doTranslate(srcString, langArray){
     // var regExpKey = /<wingi18n:amdi18n\..*?\/>/ig;//定义正则表达式，将获取html中所有i18n key
@@ -227,7 +262,7 @@ function doTranslate(srcString, langArray){
 
     var regExpTag = /{{wingi18n:amdi18n\..*?}}/ig;//定义正则表达式，将获取html中所有i18n标签并替换
     var i18nTagArray = srcString.match(regExpTag);
-    
+
     //循环源文本所有的国际化标签并替换成对应的国际化文字
     for (var index = 0; index < i18nTagArray.length; index++) {
         srcString = srcString.replace(i18nTagArray[index], langArray[i18nKeyArray[index]]);
@@ -246,7 +281,7 @@ function translate(langArray){
 
 /**
  * 图片加载失败时的处理：直接显示名称
- * @param {平台名称} platformName 
+ * @param {平台名称} platformName
  */
 function imgLoadErrorEvent(platformName) {
     var img = document.getElementById("img_"+platformName);
@@ -259,7 +294,7 @@ function imgLoadErrorEvent(platformName) {
     console.log("succ");
 }
 
-/**
+    /**
      * 渲染登录列表
      * 使用flexbox布局渲染，类似如下形式
      * <div class="flexbox">
@@ -293,30 +328,41 @@ function imgLoadErrorEvent(platformName) {
             // item = '<span href="javascript:void(0)" class="item" id="'+k+'"><img id="img_'+k+'"  src="'+data[k]+'" alt="'+k+'" onclick="modalPostMessage(\''+k+'\')"></span>';
             //动态创建登录item
             var platformName = data[k]['platform'];
-            item = document.createElement('span');
-            item.className = "item";
-            item.id = platformName;
-            item.setAttribute("onclick", "modalPostMessage('"+platformName+"')");
-            // item.onclick = function(){
-            //     modalPostMessage(platformName);
-            // }
 
-            //动态创建img
-            var img = document.createElement('img');
-            var imgUrl = data[k]['logoUrl'];
-            img.id = "img_" + platformName;
-            img.src = imgUrl? imgUrl: "";
-            img.alt = platformName;
-            // img.setAttribute("onerror", "modalPostMessage('"+platformName+"')");
-            // window.parent.postMessage('{"'+msgKey+'":"'+value+'"}', "*");
-            // img.setAttribute("onerror", "window.postMessage('{\"img\":\""+platformName+"\"}', '*')");
-            img.setAttribute("onerror", "imgLoadErrorEvent('"+platformName+"')");
-            // img.onerror = function(){
-            //     // window.postMessage({'img':platformName}, '*');
-            //     imgLoadErrorEvent(platformName);
-            // }
-
-            item.appendChild(img);
+            if ('google' === platformName.toLowerCase()){
+                item = document.createElement('div');
+                item.className = "item item_google";
+                item.id = platformName;
+                // google登录按钮需要 gg sdk 渲染
+                let divGoogleBtn = document.createElement('div');
+                divGoogleBtn.id = 'googleBtnId';
+                // divGoogleBtn.style = 'position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);'
+                // item.style = 'position:relative'
+                item.appendChild(divGoogleBtn);
+            }else {
+                item = document.createElement('span');
+                item.className = "item";
+                item.id = platformName;
+                item.setAttribute("onclick", "modalPostMessage('"+platformName+"')");
+                // item.onclick = function(){
+                //     modalPostMessage(platformName);
+                // }
+                //动态创建img
+                var img = document.createElement('img');
+                var imgUrl = data[k]['logoUrl'];
+                img.id = "img_" + platformName;
+                img.src = imgUrl ? imgUrl : "";
+                img.alt = platformName;
+                // img.setAttribute("onerror", "modalPostMessage('"+platformName+"')");
+                // window.parent.postMessage('{"'+msgKey+'":"'+value+'"}', "*");
+                // img.setAttribute("onerror", "window.postMessage('{\"img\":\""+platformName+"\"}', '*')");
+                img.setAttribute("onerror", "imgLoadErrorEvent('" + platformName + "')");
+                // img.onerror = function(){
+                //     // window.postMessage({'img':platformName}, '*');
+                //     imgLoadErrorEvent(platformName);
+                // }
+                item.appendChild(img);
+            }
             flexBox.appendChild(item);
         }
 
@@ -328,10 +374,11 @@ function imgLoadErrorEvent(platformName) {
         }
 
         return loginWayDiv;
-    }</script>
+    }
+</script>
 </head>
 <body>
-
+<script src="https://accounts.google.com/gsi/client"></script>
 
 <div class="modal_mask"></div>
 <div class="modal_pop">
@@ -350,6 +397,7 @@ function imgLoadErrorEvent(platformName) {
 </div>
 </body>
 <script type="text/javascript">
-    
+
 </script>
 </html>
+
