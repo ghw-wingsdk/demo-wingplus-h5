@@ -211,6 +211,7 @@ body {
 	.modal_box {height: 205px}
 }
 </style>
+    <script src="https://accounts.google.com/gsi/client"></script>
     <script>function modalPostMessage(value){
     window.parent.postMessage('{"user":"'+value+'"}', "*"); //*允许跨域
 }
@@ -234,8 +235,7 @@ window.addEventListener("message",function(obj){
                 }
                 let eleBtnGoogle = this.document.getElementById('googleBtnId');
                 if (eleBtnGoogle){
-                    console.log('存在Google 按钮，post  initGoogle 消息...')
-                    modalPostMessage('initGoogle')
+                    initGoogle(loginwaysArray, eleBtnGoogle)
                 }
             }
 
@@ -245,6 +245,48 @@ window.addEventListener("message",function(obj){
         }
     }
 });
+
+function initGoogle(loginwaysArray, eleBtnGoogle) {
+    console.log('google btn exists , start init...')
+    for (let k = 0; k < loginwaysArray.length; k++) {
+        let loginWay = loginwaysArray[k]
+        let platform = loginWay['platform'];
+        if ('google' === platform.toLowerCase()) {
+            let clientId = loginWay.clientId
+            if (clientId) {
+                let callback = function (googleUser) {
+                    // 同 modalPostMessage
+                    let msg = {
+                        user: platform,
+                        googleUser: googleUser
+                    }
+                    let msgJson = JSON.stringify(msg)
+                    console.log('google sdk login success and post .. ', msg)
+                    window.parent.postMessage(msgJson, "*"); //*允许跨域
+                }
+                google.accounts.id.initialize({
+                    client_id: clientId,
+                    callback: callback
+                })
+                let options = {
+                    type: 'standard',
+                    text: 'signin',
+                    theme: 'outline',
+                    width: '184',
+                    height: '40',
+                    shape: 'rectangular',
+                    size: 'large',
+                    logo_alignment: "center"
+                }
+                // options = {type: 'icon', theme: 'filled_blue', shape: 'circle', size: 'large'}
+                google.accounts.id.renderButton(eleBtnGoogle, options)
+                console.log('google sdk init success!!! ')
+            } else {
+                console.error("ERROR! google platform client id is null.");
+            }
+        }
+    }
+}
 
 /**
  * 对自定义国际化标签的文本进行国际化，国际化标签形式:{{wingi18n:amdi18n.key}},key是具体的键值。
@@ -336,8 +378,6 @@ function imgLoadErrorEvent(platformName) {
                 // google登录按钮需要 gg sdk 渲染
                 let divGoogleBtn = document.createElement('div');
                 divGoogleBtn.id = 'googleBtnId';
-                // divGoogleBtn.style = 'position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);'
-                // item.style = 'position:relative'
                 item.appendChild(divGoogleBtn);
             }else {
                 item = document.createElement('span');
@@ -378,7 +418,6 @@ function imgLoadErrorEvent(platformName) {
 </script>
 </head>
 <body>
-<script src="https://accounts.google.com/gsi/client"></script>
 
 <div class="modal_mask"></div>
 <div class="modal_pop">

@@ -2,9 +2,9 @@ var pay = {
 
     //获取商品成功回调
     prodListSuccessCB: function(productsResult){
-        console.log("获取商品成功");
+        console.log("获取商品成功", productsResult.productList);
         showResult('获取商品', '获取商品成功');
-        if(productsResult && productsResult.code == 200 && productsResult.productList.length > 0){
+        if (productsResult && productsResult.code == 200 && productsResult.productList.length > 0) {
 
             var productList = productsResult.productList;
             var  html2="";
